@@ -29,17 +29,221 @@ class DatabaseSeeder extends Seeder
         "nama_pendaftar" => "Dave Grohl",
         "jurusans_id" => 1,
         "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
         "nomor_wa" => "085757882739",
         "nama_wali" => "subaji",
-        "nomor_wa_wali" => "08998540008"
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
        ]);
+       
        DB::table("pendaftar_smk")->insert([
         "nama_pendaftar" => "Dave Grohl",
         "jurusans_id" => 2,
         "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
         "nomor_wa" => "085757882739",
         "nama_wali" => "subaji",
-        "nomor_wa_wali" => "08998540008"
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+       ]);
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 1,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
+        
+       ]);
+       
+       DB::table("pendaftar_smk")->insert([
+        "nama_pendaftar" => "Dave Grohl",
+        "jurusans_id" => 2,
+        "asal_sekolah" => "Smk laniang",
+        "tanggal_lahir" => Carbon::now(),
+        "nomor_wa" => "085757882739",
+        "nama_wali" => "subaji",
+        "nomor_wa_wali" => "08998540008",
+        "tanggal_daftar" => Carbon::now()
        ]);
 
 

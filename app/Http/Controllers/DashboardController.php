@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pendaftarSmkModel;
 use App\Models\pendaftarSmpModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,10 @@ class DashboardController extends Controller
 
     public function pendaftarSmk()
     {
-        
+        $data = pendaftarSmkModel::with('jurusan')->paginate(10);
+        return view("dashboard.pendaftar-smk", [
+            "data" => $data
+        ]);
     }
 
 

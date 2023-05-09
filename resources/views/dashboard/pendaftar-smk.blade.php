@@ -19,6 +19,7 @@
                                     <th>Nama Pendaftar</th>
                                     <th>Asal Sekolah</th>
                                     <th>Tanggal Lahir</th>
+                                    <th>Jurusan</th>
                                     <th>No Whatsapp</th>
                                     <th>Nama Wali</th>
                                     <th>Nomor Wa Wali</th>
@@ -29,18 +30,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $siswaSmp)
+                                @foreach ($data as $siswaSmk)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $siswaSmp->nama_pendaftar }}</td>
-                                    <td>{{ $siswaSmp->asal_sekolah }}</td>
-                                    <td>{{ $siswaSmp->tanggal_lahir }}</td>
-                                    <td>{{ $siswaSmp->nomor_wa }}</td>
-                                    <td>{{ $siswaSmp->nama_wali }}</td>
-                                    <td>{{ $siswaSmp->nomor_wa_wali }}</td>
-                                    <td>{{ $siswaSmp->status }}</td>
-                                    <td>{{ $siswaSmp->tanggal_daftar }}</td>
-                                    <td>{{ $siswaSmp->tanggal_update }}</td>
+                                    <td>{{ $siswaSmk->nama_pendaftar }}</td>
+                                    <td>{{ $siswaSmk->asal_sekolah }}</td>
+                                    <td>{{ $siswaSmk->tanggal_lahir }}</td>
+                                    <td>{{ $siswaSmk->jurusan->nama_jurusan }}</td>
+                                    <td>{{ $siswaSmk->nomor_wa }}</td>
+                                    <td>{{ $siswaSmk->nama_wali }}</td>
+                                    <td>{{ $siswaSmk->nomor_wa_wali }}</td>
+                                    <td>{{ $siswaSmk->status }}</td>
+                                    <td>{{ $siswaSmk->tanggal_daftar }}</td>
+                                    <td>{{ $siswaSmk->tanggal_update }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -22,6 +22,9 @@ class PendaftarSmkMigration extends Migration
             $table->string("nomor_wa");
             $table->string("nama_wali");
             $table->string("nomor_wa_wali");
+            $table->string("status")->nullable();
+            $table->dateTime("tanggal_daftar")->nullable();
+            $table->dateTime("tanggal_update")->nullable();
             $table->timestamps();
         });
     }
