@@ -1,9 +1,16 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\PembangunanController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PendaftaranSmpController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PendaftarSmkController;
+use App\Http\Controllers\PsgController;
+use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\SppController;
+use App\Http\Controllers\TunggakanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +37,12 @@ Route::get("/dashboard/pendaftar-smk", [DashboardController::class, "pendaftarSm
 // Daftar siswa routers
 Route::resource('/daftarsmp', PendaftaranSmpController::class);
 Route::resource('/daftarsmk', PendaftarSmkController::class);
+
+// dashboard keuangan panel route
+Route::resource('/dashboard/pembayaran', PembayaranController::class);
+Route::resource('/dashboard/semester', SemesterController::class);
+Route::resource('/dashboard/spp', SppController::class);
+Route::resource('/dashboard/lab', LabController::class);
+Route::resource('/dashboard/psg', PsgController::class);
+Route::resource('/dashboard/tunggakan', TunggakanController::class);
+Route::resource('/dashboard/pembangunan', PembangunanController::class);
