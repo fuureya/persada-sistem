@@ -1,4 +1,4 @@
-@extends('dashboard.inti')
+@extends('dashboard.partials.inti')
 
 @section('content')
     <h1 class="text-center">Pendaftar SMP Panel</h1>
@@ -7,9 +7,7 @@
         <div class="col-12">
             
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                </div>
+                
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -25,7 +23,7 @@
                                     <th>Status</th>
                                     <th>Tanggal Daftar</th>
                                     <th>Tanggal Update</th>
-                                    
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +39,7 @@
                                     <td>{{ $siswaSmp->status }}</td>
                                     <td>{{ $siswaSmp->tanggal_daftar }}</td>
                                     <td>{{ $siswaSmp->tanggal_update }}</td>
+                                    <td class="text-center"><a href="dashboard/delete-smp"><i class="fa-solid fa-trash text-danger"></i></a>  <a href="/dashboard/update-smp"><i class="fa-solid fa-pencil text-primary"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

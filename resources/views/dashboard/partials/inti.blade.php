@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="{{ url('sb_admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 <body id="page-top">
@@ -47,7 +48,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fa-solid fa-users"></i>
                     <span>Panel Pendaftar</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -62,7 +63,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fa-solid fa-book"></i>
                     <span>Laporan Panel</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -70,9 +71,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/dashboard/pembayaran">Pembayaran</a>
                         <a class="collapse-item" href="/dashboard/semester">Semester</a>
-                        <a class="collapse-item" href="/dashboard/spp">Spp</a>
-                        <a class="collapse-item" href="/dashboard/lab">Lab</a>
-                        <a class="collapse-item" href="/dashboard/psg">Psg</a>
+                        <a class="collapse-item" href="/dashboard/spp">SPP</a>
+                        <a class="collapse-item" href="/dashboard/lab">LAB</a>
+                        <a class="collapse-item" href="/dashboard/psg">PSG</a>
                         <a class="collapse-item" href="/dashboard/tunggakan">Tunggakan</a>
                         <a class="collapse-item" href="/dashboard/pembangunan">Pembangunan</a>
                     </div>

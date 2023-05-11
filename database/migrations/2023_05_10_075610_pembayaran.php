@@ -38,6 +38,6 @@ class Pembayaran extends Migration
      */
     public function down()
     {
-        Schema::drop("pebayaran");
+        Schema::drop("pembayaran");
     }
 }

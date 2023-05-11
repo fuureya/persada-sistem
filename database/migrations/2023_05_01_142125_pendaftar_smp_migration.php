@@ -25,7 +25,6 @@ class PendaftarSmpMigration extends Migration
             $table->string("status")->nullable();
             $table->dateTime("tanggal_daftar")->nullable();
             $table->dateTime("tanggal_update")->nullable();
-
             $table->timestamps();
         });
     }

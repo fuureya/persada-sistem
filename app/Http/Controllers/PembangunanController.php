@@ -14,7 +14,7 @@ class PembangunanController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.pembangunan");
     }
 
     /**
