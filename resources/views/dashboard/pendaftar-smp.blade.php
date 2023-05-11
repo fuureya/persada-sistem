@@ -10,7 +10,9 @@
                 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <div class="table-wrapper">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                            width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -27,23 +29,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $siswaSmp)
+                                @foreach ($data as $siswaSmk)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $siswaSmp->nama_pendaftar }}</td>
-                                    <td>{{ $siswaSmp->asal_sekolah }}</td>
-                                    <td>{{ $siswaSmp->tanggal_lahir }}</td>
-                                    <td>{{ $siswaSmp->nomor_wa }}</td>
-                                    <td>{{ $siswaSmp->nama_wali }}</td>
-                                    <td>{{ $siswaSmp->nomor_wa_wali }}</td>
-                                    <td>{{ $siswaSmp->status }}</td>
-                                    <td>{{ $siswaSmp->tanggal_daftar }}</td>
-                                    <td>{{ $siswaSmp->tanggal_update }}</td>
-                                    <td class="text-center"><a href="dashboard/delete-smp"><i class="fa-solid fa-trash text-danger"></i></a>  <a href="/dashboard/update-smp"><i class="fa-solid fa-pencil text-primary"></i></a></td>
+                                    <td>{{ $siswaSmk->nama_pendaftar }}</td>
+                                    <td>{{ $siswaSmk->asal_sekolah }}</td>
+                                    <td>{{ $siswaSmk->tanggal_lahir }}</td>
+                                    <td>{{ $siswaSmk->nomor_wa }}</td>
+                                    <td>{{ $siswaSmk->nama_wali }}</td>
+                                    <td>{{ $siswaSmk->nomor_wa_wali }}</td>
+                                    <td>{{ $siswaSmk->status }}</td>
+                                    <td>{{ $siswaSmk->tanggal_daftar }}</td>
+                                    <td>{{ $siswaSmk->tanggal_update }}</td>
+                                    <td class="text-center"><a href="dashboard/delete-smk"><i class="fa-solid fa-trash text-danger"></i></a>  <a href="/dashboard/update-smk"><i class="fa-solid fa-pencil text-primary"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                         <div class="btn-links d-flex justify-content-center">
                             {{ $data->links() }}
                         </div>

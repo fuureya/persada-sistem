@@ -27,7 +27,9 @@ class Pembayaran extends Migration
             $table->integer("uang_psg")->nullable();
             $table->integer("uang_uas")->nullable();
             $table->integer("tunggakan")->nullable();
-            $table->integer("keterangan")->nullable();
+            $table->string("keterangan")->nullable();
+            $table->dateTime("updated_at")->nullable();
+            $table->dateTime("created_at")->nullable();
         });
     }
 

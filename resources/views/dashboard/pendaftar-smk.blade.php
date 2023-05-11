@@ -1,16 +1,19 @@
 @extends('dashboard.partials.inti')
 
 @section('content')
-    <h1 class="text-center">Pendaftar SMP Panel</h1>
+<style>
+    
+</style>
+    <h1 class="text-center">Pendaftar SMK Panel</h1>
 
     <div class="row">
         <div class="col-12">
-            
             <div class="card shadow mb-4">
-                
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <div class="table-wrapper">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+                            width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -46,12 +49,14 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                         <div class="btn-links d-flex justify-content-center">
                             {{ $data->links() }}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 @endsection

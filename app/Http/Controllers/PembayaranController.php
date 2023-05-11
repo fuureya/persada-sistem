@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
@@ -14,7 +15,10 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        return view("dashboard.pembayaran");
+        
+        return view("dashboard.pembayaran", [
+            "data" => DB::table("pembayaran")->paginate(10)
+        ]);
     }
 
     /**
