@@ -13,33 +13,29 @@
                                     <th>No</th>
                                     <th>Tanggal</th>
                                     <th>Kode</th>
-                                    <th>Keterangan</th>
+                                    <th>Uraian</th>
                                     <th>Penerimaan</th>
                                     <th>Pengeluaran</th>
                                     <th>Saldo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($data as $siswaSmk)
+                                @foreach ($data as $semester)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $siswaSmk->nama_pendaftar }}</td>
-                                    <td>{{ $siswaSmk->asal_sekolah }}</td>
-                                    <td>{{ $siswaSmk->tanggal_lahir }}</td>
-                                    <td>{{ $siswaSmk->jurusan->nama_jurusan }}</td>
-                                    <td>{{ $siswaSmk->nomor_wa }}</td>
-                                    <td>{{ $siswaSmk->nama_wali }}</td>
-                                    <td>{{ $siswaSmk->nomor_wa_wali }}</td>
-                                    <td>{{ $siswaSmk->status }}</td>
-                                    <td>{{ $siswaSmk->tanggal_daftar }}</td>
-                                    <td>{{ $siswaSmk->tanggal_update }}</td>
+                                    <td>{{ $semester->tanggal }}</td>
+                                    <td>{{ $semester->kode }}</td>
+                                    <td>{{ $semester->uraian }}</td>
+                                    <td>{{ $semester->penerimaan}}</td>
+                                    <td>{{ $semester->pengeluaran }}</td>
+                                    <td>{{ $semester->saldo }}</td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
-                        {{-- <div class="btn-links d-flex justify-content-center">
+                        <div class="btn-links d-flex justify-content-center">
                             {{ $data->links() }}
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>

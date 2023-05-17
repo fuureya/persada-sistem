@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\semester;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SemesterController extends Controller
 {
@@ -14,7 +15,10 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        return view("dashboard.semester");
+        $data = DB::table('semester')->paginate(10);
+        return view("dashboard.semester", [
+            "data" => $data
+        ]);
     }
 
     /**

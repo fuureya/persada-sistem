@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\spp;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class SppController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class SppController extends Controller
      */
     public function index()
     {
-        return view("dashboard.spp");
+        return view("dashboard.spp", [
+            "data" => DB::table('spp')->paginate(10)
+        ]);
     }
 
     /**
