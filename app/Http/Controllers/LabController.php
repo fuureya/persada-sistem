@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\lab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LabController extends Controller
 {
@@ -14,7 +15,9 @@ class LabController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.lab", [
+            "data" => DB::table("lab")->paginate(10)
+        ]);
     }
 
     /**

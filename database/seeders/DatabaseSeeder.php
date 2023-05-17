@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\lab;
 use App\Models\pembayaran;
 use App\Models\pendaftarSmpModel;
 use App\Models\pendaftarSmkModel;
@@ -37,5 +38,6 @@ class DatabaseSeeder extends Seeder
         pembayaran::factory(40)->create();
         semester::factory(40)->create();
         spp::factory(40)->create();
+        lab::factory(40)->create();
     }
 }
