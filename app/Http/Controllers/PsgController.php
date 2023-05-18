@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\psg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PsgController extends Controller
 {
@@ -14,7 +15,9 @@ class PsgController extends Controller
      */
     public function index()
     {
-        return view("dashboard.psg");
+        return view("dashboard.psg", [
+            "data" => DB::table("psg")->paginate(10)
+        ]);
     }
 
     /**

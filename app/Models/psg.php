@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class psg extends Model
 {
     use HasFactory;
+    protected $table = "psg";
 }

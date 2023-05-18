@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tunggakan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TunggakanController extends Controller
 {
@@ -14,7 +15,9 @@ class TunggakanController extends Controller
      */
     public function index()
     {
-        return view("dashboard.tunggakan");
+        return view("dashboard.tunggakan", [
+            "data" => DB::table("tunggakan")->paginate(10)
+        ]);
     }
 
     /**

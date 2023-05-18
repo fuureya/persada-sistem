@@ -3,11 +3,14 @@
 namespace Database\Seeders;
 
 use App\Models\lab;
+use App\Models\pembangunan;
 use App\Models\pembayaran;
 use App\Models\pendaftarSmpModel;
 use App\Models\pendaftarSmkModel;
+use App\Models\psg;
 use App\Models\semester;
 use App\Models\spp;
+use App\Models\tunggakan;
 use Carbon\Carbon;
 use Database\Factories\pendaftarSmpFactory;
 use DateTime;
@@ -39,5 +42,8 @@ class DatabaseSeeder extends Seeder
         semester::factory(40)->create();
         spp::factory(40)->create();
         lab::factory(40)->create();
+        psg::factory(40)->create();
+        tunggakan::factory(40)->create();
+        pembangunan::factory(40)->create();
     }
 }

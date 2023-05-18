@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pembangunan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PembangunanController extends Controller
 {
@@ -14,7 +15,9 @@ class PembangunanController extends Controller
      */
     public function index()
     {
-        return view("dashboard.pembangunan");
+        return view("dashboard.pembangunan", [
+            "data" => DB::table("pembangunan")->paginate(10)
+        ]);
     }
 
     /**
