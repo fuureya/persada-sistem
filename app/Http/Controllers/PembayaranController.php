@@ -13,11 +13,15 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        if($request->has("nis")){
+            $data = DB::table("pembayaran")->where('nis','like',"%".$request->nis."%")->paginate();
+        } else {
+            $data = DB::table("pembayaran")->paginate(10);
+        }
         return view("dashboard.pembayaran", [
-            "data" => DB::table("pembayaran")->paginate(10)
+            "data" => $data
         ]);
     }
 
@@ -39,8 +43,10 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
+
+    
 
     /**
      * Display the specified resource.

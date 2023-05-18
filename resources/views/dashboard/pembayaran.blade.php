@@ -29,9 +29,9 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="/dashboard/pembayaran/insert">
-                                                    @csrf
+                                                <form method="post" action="/dashboard/pembayaran">
                                                     @method("POST")
+                                                    @csrf
                                                     <div class="form-group">
                                                       <label for="nama-siswa">Nama Siswa</label>
                                                       <input type="text" class="form-control" id="nama-siswa" name="nama_siswa">
@@ -72,13 +72,23 @@
                                                       <label for="uang_psg">Masukkan Uang PSG</label>
                                                       <input type="number" class="form-control" id="uang_psg" name="uang_psg">
                                                     </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_uas">Masukkan Uang UAS</label>
+                                                      <input type="number" class="form-control" id="uang_uas" name="uang_psg">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="tunggakan">Masukkan Uang Tunggakan</label>
+                                                      <input type="number" class="form-control" id="tunggakan" name="uang_psg">
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="keterangan">Masukkan Keterangan</label>
+                                                      <input type="text" class="form-control" id="keterangan" name="uang_psg">
+                                                    </div>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Tambah</button>
                                                     
                                                   </form>
-                                                  <div class="modal-footer">
-                                                      <button type="button" class="btn btn-secondary"
-                                                          data-dismiss="modal">Close</button>
-                                                      <button type="button" class="btn btn-primary">Tambah</button>
-                                                  </div>
                                                   
                                             </div>
                                         </div>
@@ -90,14 +100,14 @@
     
                             <div class="col-6">
                                 <div class="cari ">
-                                    <form
+                                    <form action="/dashboard/pembayaran" action="GET"
                                         class="d-flex justify-content-end form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small"
+                                            <input type="search" class="form-control bg-light border-0 small"
                                                 placeholder="Cari berdasarkan NIS" aria-label="Search"
-                                                aria-describedby="basic-addon2">
+                                                aria-describedby="basic-addon2" name="nis" value="{{ old('nis') }}">
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
+                                                <button class="btn btn-primary" type="submit">
                                                     <i class="fas fa-search fa-sm"></i>
                                                 </button>
                                             </div>
