@@ -39,7 +39,7 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return dd($request->all());
     }
 
     /**

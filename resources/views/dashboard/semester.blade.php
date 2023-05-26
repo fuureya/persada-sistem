@@ -27,7 +27,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="/dashboard/pembayaran">
+                                            <form method="post" action="/dashboard/semester">
                                                 @method("POST")
                                                 @csrf
                                                 
@@ -41,7 +41,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="uraian">Masukkan Uraian</label>
-                                                  <input type="number" class="form-control" id="uraian" name="uraian">
+                                                  <input type="text" class="form-control" id="uraian" name="uraian">
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="penerimaan">Masukkan Penerimaan</label>

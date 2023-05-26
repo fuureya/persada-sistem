@@ -11,12 +11,31 @@
                         <div class="row">
 
                             {{-- modal section --}}
-                            <div class="col-6">
+                            <div class="col-6 d-flex">
+                                {{-- button rekap --}}
+                                <form action="/dashboard/pembayaran" method="GET" class="pr-3 pl-3">
+                                    <select class="form-select" name="rekap">
+                                        <option selected >Rekap By Bulan</option>
+                                         <option value="1">Januari</option>
+                                         <option value="2">Februari</option>
+                                         <option value="3">Maret</option>
+                                         <option value="4">April</option>
+                                         <option value="5">Mei</option>
+                                         <option value="6">Juni</option>
+                                         <option value="7">Juli</option>
+                                         <option value="8">Agustus</option>
+                                         <option value="9">September</option>
+                                         <option value="10">Oktober</option>
+                                         <option value="11">November</option>
+                                         <option value="12">Desember</option>
+                                      </select>
+                                      <button type="submit" class="btn btn-success">Rekap</button>
+                                </form>
+                                {{-- end button rekap --}}
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertData">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
-    
                                 <!-- Modal -->
                                 <div class="modal fade" id="insertData" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
@@ -115,7 +134,6 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="table-responsive">
@@ -158,13 +176,31 @@
                                             <td>Rp. {{ $siswaSmk->uang_uas }}</td>
                                             <td>Rp. {{ $siswaSmk->tunggakan }}</td>
                                             <td>{{ $siswaSmk->keterangan }}</td>
-                                            <td class="text-center"><a href="dashboard/delete-smk"><i
-                                                        class="fa-solid fa-trash text-danger"></i></a> <a
-                                                    href="/dashboard/update-smk"><i
-                                                        class="fa-solid fa-pencil text-primary"></i></a></td>
+                                            <td class="text-center">
+                                                <form action="/dashboard/pembayaran/{{ $siswaSmk->id }}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" onclick="return confirm('Yakin mau menghapus?')" class="btn btn-danger badge">Hapus</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <td colspan="4" class="text-center "><strong>Total</strong></td>
+                                    <td></td>
+                                    <td>Uang Pembangunan : Rp. {{ $uang_pembangunan }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    
+                                    <td colspan="2"></td>
+                                    
+                                </tfoot>
                             </table>
                         </div>
                         <div class="btn-links d-flex justify-content-center">
