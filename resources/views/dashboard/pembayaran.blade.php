@@ -33,6 +33,7 @@
                                 </form>
                                 {{-- end button rekap --}}
                                 <!-- Button trigger modal -->
+                                {{-- modal add --}}
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertData">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
@@ -53,55 +54,94 @@
                                                     @csrf
                                                     <div class="form-group">
                                                       <label for="nama-siswa">Nama Siswa</label>
-                                                      <input type="text" class="form-control" id="nama-siswa" name="nama_siswa">
+                                                      <input type="text" class="form-control @error('nama_siswa') is-invalid @enderror" id="nama-siswa" name="nama_siswa">
+                                                      @error('nama_siswa')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="tanggal_bayar">Tanggal Bayar</label>
-                                                      <input type="date" class="form-control" id="tanggal_bayar">
+                                                      <input type="date" class="form-control @error('tanggal_bayar') is-invalid @enderror" id="tanggal_bayar" name="tanggal_bayar">
+                                                      @error('tanggal_bayar')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="nis">Masukkan NIS</label>
-                                                      <input type="number" class="form-control" id="nis" name="nis">
+                                                      <input type="number" class="form-control @error('nis') is-invalid @enderror" id="nis" name="nis">
+                                                      @error('nis')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                      <label for="nis">Masukkan Kelas</label>
-                                                      <input type="number" class="form-control" id="nis" name="nis">
+                                                      <label for="kelas">Masukkan Kelas</label>
+                                                      <input type="number" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
+                                                      @error('kelas')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="uang_pembangunan">Masukkan Uang Pembangunan</label>
-                                                      <input type="number" class="form-control" id="uang_pembangunan" name="uang_pembangunan">
+                                                      <input type="number" class="form-control @error('uang_pembangunan') is-invalid @enderror" id="uang_pembangunan" name="uang_pembangunan">
+                                                      @error('uang_pembangunan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="uang_spp">Masukkan Uang SPP</label>
-                                                      <input type="number" class="form-control" id="uang_spp" name="uang_spp">
+                                                      <input type="number" class="form-control @error('uang_pembangunan') is-invalid @enderror" id="uang_spp" name="uang_spp">
+                                                      @error('uang_spp')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="uang_lab">Masukkan Uang lab</label>
-                                                      <input type="number" class="form-control" id="uang_lab" name="uang_lab">
+                                                      <input type="number" class="form-control @error('uang_lab') is-invalid @enderror" id="uang_lab" name="uang_lab">
+                                                      @error('uang_lab')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="semester_ganjil">Masukkan Uang Semester Ganjil</label>
-                                                      <input type="number" class="form-control" id="semester_ganjil" name="semester_ganjil">
+                                                      <input type="number" class="form-control @error('semester_ganjil') is-invalid @enderror" id="semester_ganjil" name="semester_ganjil">
+                                                      @error('semester_ganjil')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="semester_genap">Masukkan Uang Semester Genap</label>
-                                                      <input type="number" class="form-control" id="semester_genap" name="semester_genap">
+                                                      <input type="number" class="form-control @error('semester_genap') is-invalid @enderror" id="semester_genap" name="semester_genap">
+                                                      @error('semester_genap')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="uang_psg">Masukkan Uang PSG</label>
-                                                      <input type="number" class="form-control" id="uang_psg" name="uang_psg">
+                                                      <input type="number" class="form-control @error('uang_psg') is-invalid @enderror" id="uang_psg" name="uang_psg">
+                                                      @error('uang_psg')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="uang_uas">Masukkan Uang UAS</label>
-                                                      <input type="number" class="form-control" id="uang_uas" name="uang_psg">
+                                                      <input type="number" class="form-control @error('uang_uas') is-invalid @enderror" id="uang_uas" name="uang_uas">
+                                                      @error('uang_uas')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="tunggakan">Masukkan Uang Tunggakan</label>
-                                                      <input type="number" class="form-control" id="tunggakan" name="uang_psg">
+                                                      <input type="number" class="form-control @error('tunggakan') is-invalid @enderror" id="tunggakan" name="tunggakan">
+                                                      @error('tunggakan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="keterangan">Masukkan Keterangan</label>
-                                                      <input type="text" class="form-control" id="keterangan" name="uang_psg">
+                                                      <input type="text" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
+                                                      @error('keterangan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
                                                     </div>
                                                         <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">Close</button>
@@ -113,6 +153,124 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                {{-- modal update --}}
+                                <div class="modal fade" id="updateData" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Update Data</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="/dashboard/pembayaran">
+                                                    @method("POST")
+                                                    @csrf
+                                                    <div class="form-group">
+                                                      <label for="nama-siswa">Nama Siswa</label>
+                                                      <input type="text" class="form-control @error('nama_siswa') is-invalid @enderror" id="nama-siswa" name="nama_siswa">
+                                                      @error('nama_siswa')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="tanggal_bayar">Tanggal Bayar</label>
+                                                      <input type="date" class="form-control @error('tanggal_bayar') is-invalid @enderror" id="tanggal_bayar" name="tanggal_bayar">
+                                                      @error('tanggal_bayar')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="nis">Masukkan NIS</label>
+                                                      <input type="number" class="form-control @error('nis') is-invalid @enderror" id="nis" name="nis">
+                                                      @error('nis')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="kelas">Masukkan Kelas</label>
+                                                      <input type="number" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
+                                                      @error('kelas')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_pembangunan">Masukkan Uang Pembangunan</label>
+                                                      <input type="number" class="form-control @error('uang_pembangunan') is-invalid @enderror" id="uang_pembangunan" name="uang_pembangunan">
+                                                      @error('uang_pembangunan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_spp">Masukkan Uang SPP</label>
+                                                      <input type="number" class="form-control @error('uang_pembangunan') is-invalid @enderror" id="uang_spp" name="uang_spp">
+                                                      @error('uang_spp')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_lab">Masukkan Uang lab</label>
+                                                      <input type="number" class="form-control @error('uang_lab') is-invalid @enderror" id="uang_lab" name="uang_lab">
+                                                      @error('uang_lab')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="semester_ganjil">Masukkan Uang Semester Ganjil</label>
+                                                      <input type="number" class="form-control @error('semester_ganjil') is-invalid @enderror" id="semester_ganjil" name="semester_ganjil">
+                                                      @error('semester_ganjil')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="semester_genap">Masukkan Uang Semester Genap</label>
+                                                      <input type="number" class="form-control @error('semester_genap') is-invalid @enderror" id="semester_genap" name="semester_genap">
+                                                      @error('semester_genap')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_psg">Masukkan Uang PSG</label>
+                                                      <input type="number" class="form-control @error('uang_psg') is-invalid @enderror" id="uang_psg" name="uang_psg">
+                                                      @error('uang_psg')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="uang_uas">Masukkan Uang UAS</label>
+                                                      <input type="number" class="form-control @error('uang_uas') is-invalid @enderror" id="uang_uas" name="uang_uas">
+                                                      @error('uang_uas')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="tunggakan">Masukkan Uang Tunggakan</label>
+                                                      <input type="number" class="form-control @error('tunggakan') is-invalid @enderror" id="tunggakan" name="tunggakan">
+                                                      @error('tunggakan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <label for="keterangan">Masukkan Keterangan</label>
+                                                      <input type="text" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
+                                                      @error('keterangan')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                      @enderror
+                                                    </div>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    
+                                                  </form>
+                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- end modal update --}}
                             </div>
                             {{-- end modal --}}
     
@@ -182,6 +340,8 @@
                                                     @method("DELETE")
                                                     <button type="submit" onclick="return confirm('Yakin mau menghapus?')" class="btn btn-danger badge">Hapus</button>
                                                 </form>
+                                                    <a href="/dashboard/pembayaran/{{$siswaSmk->id}}" class="btn btn-warning badge tombol">
+                                                    Update</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -197,9 +357,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    
                                     <td colspan="2"></td>
-                                    
                                 </tfoot>
                             </table>
                         </div>
@@ -211,4 +369,14 @@
             </div>
         </div>
     </div>
+
+    {{-- alert jika sukses menambah data --}}
+    @if (session('success'))
+        <script>
+            alert('sukses menambah data')
+            
+        </script>
+    @endif
+
 @endsection
+

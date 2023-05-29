@@ -6,6 +6,8 @@ use App\Models\pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function GuzzleHttp\Promise\all;
+
 class PembayaranController extends Controller
 {
     /**
@@ -70,21 +72,22 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, ([
-        'nama_siswa' => 'required',
-        'tanggal_bayar' => 'required',
-        'nis' => 'required|unique:pembayaran',
-        'kelas' => 'required',
-        'uang_pembangunan' => 'required',
-        'uang_spp' => 'required',
-        'uang_lab' => 'required',
-        'semester_ganjil' => 'required',
-        'semester_genap' => 'required',
-        'uang_psg' => 'required',
-        'tunggakan' => 'required',
-        'keterangan' => 'required'
-       ]));
 
+        $validated = $request->validate([
+            'nama_siswa' => 'required',
+            'tanggal_bayar' => 'required',
+            'nis' => 'required',
+            'kelas' => 'required',
+            'uang_pembangunan' => 'required',
+            'uang_spp' => 'required',
+            'uang_lab' => 'required',
+            'uang_uas' => 'required',
+            'semester_ganjil' => 'required',
+            'semester_genap' => 'required',
+            'uang_psg' => 'required',
+            'tunggakan' => 'required',
+            'keterangan' => 'required'
+        ]);
        
        $insert = pembayaran::create([
         'nama_siswa' => $request->nama_siswa,
@@ -97,6 +100,7 @@ class PembayaranController extends Controller
         'semester_ganjil' => $request->semester_ganjil,
         'semester_genap' => $request->semester_genap,
         'uang_psg' => $request->uang_psg,
+        'uang_uas' => $request->uang_uas,
         'tunggakan' => $request->tunggakan,
         'keterangan' => $request->keterangan
        ]);
@@ -118,7 +122,10 @@ class PembayaranController extends Controller
      */
     public function show(pembayaran $pembayaran)
     {
-        //
+        
+        return view("dashboard.pembayaran_update", [
+            "data" => $pembayaran
+        ]);
     }
 
     /**
@@ -129,7 +136,7 @@ class PembayaranController extends Controller
      */
     public function edit(pembayaran $pembayaran)
     {
-        //
+        
     }
 
     /**
@@ -141,7 +148,11 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, pembayaran $pembayaran)
     {
-        //
+       $pembayaran->find($request->id);
+       $pembayaran->nama_siswa = $request->update_nama_siswa;
+       $pembayaran->nama_siswa = $request->update_nis;
+       $pembayaran->save();
+       return redirect("/dashboard/pembayaran")->with(["success" => "berhasil tambah data"]);
     }
 
     /**

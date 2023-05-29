@@ -11,5 +11,6 @@
 <body>
     @yield('content')
     <script src="lib/bootsrap/js/bootstrap.min.js"></script>
+    
 </body>
 </html>
