@@ -77,16 +77,16 @@ class PembayaranController extends Controller
         $validated = $request->validate([
             'nama_siswa' => 'required',
             'tanggal_bayar' => 'required',
-            'nis' => 'required',
+            'nis' => 'required|numeric',
             'kelas' => 'required',
-            'uang_pembangunan' => 'required',
-            'uang_spp' => 'required',
-            'uang_lab' => 'required',
-            'uang_uas' => 'required',
-            'semester_ganjil' => 'required',
-            'semester_genap' => 'required',
-            'uang_psg' => 'required',
-            'tunggakan' => 'required',
+            'uang_pembangunan' => 'required|numeric',
+            'uang_spp' => 'required|numeric',
+            'uang_lab' => 'required|numeric',
+            'uang_uas' => 'required|numeric',
+            'semester_ganjil' => 'required|numeric',
+            'semester_genap' => 'required|numeric',
+            'uang_psg' => 'required|numeric',
+            'tunggakan' => 'required|numeric',
             'keterangan' => 'required'
         ]);
 
@@ -149,21 +149,21 @@ class PembayaranController extends Controller
     public function update(Request $request, pembayaran $pembayaran)
     {
         // validate before update
-        $validated = $request->validate([
-            'update_nama_siswa' => 'required',
-            'update_tanggal_bayar' => 'required',
-            'update_nis' => 'required',
-            'update_kelas' => 'required',
-            'update_uang_pembangunan' => 'required',
-            'update_uang_spp' => 'required',
-            'update_uang_lab' => 'required',
-            'update_uang_uas' => 'required',
-            'update_semester_ganjil' => 'required',
-            'update_semester_genap' => 'required',
-            'update_uang_psg' => 'required',
-            'update_tunggakan' => 'required',
-            'update_keterangan' => 'required'
-        ]);
+        // $validated = $request->validate([
+        //     'update_nama_siswa' => '',
+        //     'update_tanggal_bayar' => 'required',
+        //     'update_nis' => 'required',
+        //     'update_kelas' => 'required',
+        //     'update_uang_pembangunan' => 'required',
+        //     'update_uang_spp' => 'required',
+        //     'update_uang_lab' => 'required',
+        //     'update_uang_uas' => 'required',
+        //     'update_semester_ganjil' => 'required',
+        //     'update_semester_genap' => 'required',
+        //     'update_uang_psg' => 'required',
+        //     'update_tunggakan' => 'required',
+        //     'update_keterangan' => 'required'
+        // ]);
 
         $pembayaran->find($request->id);
         $pembayaran->nama_siswa = $request->update_nama_siswa;
@@ -173,7 +173,10 @@ class PembayaranController extends Controller
         $pembayaran->uang_spp = $request->update_uang_spp;
         $pembayaran->uang_lab = $request->update_uang_lab;
         $pembayaran->semester_ganjil = $request->update_semester_ganjil;
-        $pembayaran->genap = $request->update_genap;
+        $pembayaran->semester_genap = $request->update_semester_genap;
+        $pembayaran->uang_psg = $request->update_uang_psg;
+        $pembayaran->uang_uas = $request->update_uang_uas;
+        $pembayaran->tunggakan = $request->update_tunggakan;
 
         $pembayaran->save();
         return redirect("/dashboard/pembayaran")->with(["success" => "berhasil mengubah data"]);
