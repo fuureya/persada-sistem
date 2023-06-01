@@ -18,17 +18,17 @@ class PembayaranController extends Controller
     public function index(Request $request)
     {
 
-        
+
         $pembayaran = pembayaran::whereNotNull('nis');
 
         // cari by nis
-        if($request->has("nis")){
+        if ($request->has("nis")) {
             // $data = DB::table("pembayaran")->where('nis','like',"%".$request->nis."%")->paginate();
-            $pembayaran = $pembayaran->where('nis','like',"%".$request->nis."%");
+            $pembayaran = $pembayaran->where('nis', 'like', "%" . $request->nis . "%");
         }
 
         // rekap by bulan
-        if($request->has("rekap")){
+        if ($request->has("rekap")) {
             $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
         }
 
@@ -36,12 +36,13 @@ class PembayaranController extends Controller
         $data = $pembayaran->paginate(10);
 
         // total uang pembangunan
-        function sumPembangunan(){
+        function sumPembangunan()
+        {
             $totalPembayaran = pembayaran::all();
             // variabel nilai total uang pembayaran
             $totalUangPembayaran = 0;
-            
-            foreach($totalPembayaran as $total){
+
+            foreach ($totalPembayaran as $total) {
                 $totalUangPembayaran += (int)$total["uang_pembangunan"] + (int)$total["uang_pembangunan"];
             }
             return $totalUangPembayaran;
@@ -50,7 +51,7 @@ class PembayaranController extends Controller
         return view("dashboard.pembayaran", [
             "data" => $data,
             "uang_pembangunan" => sumPembangunan()
-           
+
         ]);
     }
 
@@ -88,31 +89,31 @@ class PembayaranController extends Controller
             'tunggakan' => 'required',
             'keterangan' => 'required'
         ]);
-       
-       $insert = pembayaran::create([
-        'nama_siswa' => $request->nama_siswa,
-        'tanggal_bayar' => $request->tanggal_bayar,
-        'nis' => $request->nis,
-        'kelas' => $request->kelas,
-        'uang_pembangunan' => $request->uang_pembangunan,
-        'uang_spp' => $request->uang_spp,
-        'uang_lab' => $request->uang_lab,
-        'semester_ganjil' => $request->semester_ganjil,
-        'semester_genap' => $request->semester_genap,
-        'uang_psg' => $request->uang_psg,
-        'uang_uas' => $request->uang_uas,
-        'tunggakan' => $request->tunggakan,
-        'keterangan' => $request->keterangan
-       ]);
 
-       if($insert){
-        return redirect("/dashboard/pembayaran")->with(["success" => "berhasil tambah data"]);
-       } else {
-        return redirect("/dashboard/pembayaran")->with(["error" => "Gagal Menambah data"]);
-       }
+        $insert = pembayaran::create([
+            'nama_siswa' => $request->nama_siswa,
+            'tanggal_bayar' => $request->tanggal_bayar,
+            'nis' => $request->nis,
+            'kelas' => $request->kelas,
+            'uang_pembangunan' => $request->uang_pembangunan,
+            'uang_spp' => $request->uang_spp,
+            'uang_lab' => $request->uang_lab,
+            'semester_ganjil' => $request->semester_ganjil,
+            'semester_genap' => $request->semester_genap,
+            'uang_psg' => $request->uang_psg,
+            'uang_uas' => $request->uang_uas,
+            'tunggakan' => $request->tunggakan,
+            'keterangan' => $request->keterangan
+        ]);
+
+        if ($insert) {
+            return redirect("/dashboard/pembayaran")->with(["success" => "berhasil tambah data"]);
+        } else {
+            return redirect("/dashboard/pembayaran")->with(["error" => "Gagal Menambah data"]);
+        }
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -122,7 +123,7 @@ class PembayaranController extends Controller
      */
     public function show(pembayaran $pembayaran)
     {
-        
+
         return view("dashboard.pembayaran_update", [
             "data" => $pembayaran
         ]);
@@ -136,7 +137,6 @@ class PembayaranController extends Controller
      */
     public function edit(pembayaran $pembayaran)
     {
-        
     }
 
     /**
@@ -148,11 +148,35 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, pembayaran $pembayaran)
     {
-       $pembayaran->find($request->id);
-       $pembayaran->nama_siswa = $request->update_nama_siswa;
-       $pembayaran->nama_siswa = $request->update_nis;
-       $pembayaran->save();
-       return redirect("/dashboard/pembayaran")->with(["success" => "berhasil tambah data"]);
+        // validate before update
+        $validated = $request->validate([
+            'update_nama_siswa' => 'required',
+            'update_tanggal_bayar' => 'required',
+            'update_nis' => 'required',
+            'update_kelas' => 'required',
+            'update_uang_pembangunan' => 'required',
+            'update_uang_spp' => 'required',
+            'update_uang_lab' => 'required',
+            'update_uang_uas' => 'required',
+            'update_semester_ganjil' => 'required',
+            'update_semester_genap' => 'required',
+            'update_uang_psg' => 'required',
+            'update_tunggakan' => 'required',
+            'update_keterangan' => 'required'
+        ]);
+
+        $pembayaran->find($request->id);
+        $pembayaran->nama_siswa = $request->update_nama_siswa;
+        $pembayaran->nis = $request->update_nis;
+        $pembayaran->kelas = $request->update_kelas;
+        $pembayaran->uang_pembangunan = $request->update_uang_pembangunan;
+        $pembayaran->uang_spp = $request->update_uang_spp;
+        $pembayaran->uang_lab = $request->update_uang_lab;
+        $pembayaran->semester_ganjil = $request->update_semester_ganjil;
+        $pembayaran->genap = $request->update_genap;
+
+        $pembayaran->save();
+        return redirect("/dashboard/pembayaran")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**
