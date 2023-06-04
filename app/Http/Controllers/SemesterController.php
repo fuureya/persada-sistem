@@ -104,7 +104,7 @@ class SemesterController extends Controller
         $semester->pengeluaran = $request->update_pengeluaran;
         $semester->saldo = $request->update_saldo;
         $semester->save();
-        return redirect("/dashboard/semester")->with(["success" => "berhasil mengubah data"]);
+        return redirect("/dashboard/semester")->with(["anjay" => "berhasil mengubah data"]);
     }
 
     /**

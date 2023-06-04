@@ -75,7 +75,7 @@
     </div>
 
     {{-- alert jika sukses menambah data --}}
-    @if (session('success'))
+    @if (session('anjay'))
         <script>
             alert('Sukses Mengubah Data');
         </script>
