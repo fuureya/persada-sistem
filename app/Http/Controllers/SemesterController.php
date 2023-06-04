@@ -103,8 +103,10 @@ class SemesterController extends Controller
      * @param  \App\Models\semester  $semester
      * @return \Illuminate\Http\Response
      */
-    public function destroy(semester $semester)
+    public function destroy($id)
     {
-        //
+        $delete = semester::find($id);
+        $delete->delete();
+        return redirect("dashboard/semester");
     }
 }

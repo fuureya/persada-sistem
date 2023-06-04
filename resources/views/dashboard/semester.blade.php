@@ -163,7 +163,7 @@
                                         <td>{{ $semester->pengeluaran }}</td>
                                         <td>{{ $semester->saldo }}</td>
                                         <td class="text-center">
-                                            <form action="/dashboard/pembayaran/{{ $semester->id }}" method="POST">
+                                            <form action="/dashboard/semester/{{ $semester->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Yakin mau menghapus?')"
