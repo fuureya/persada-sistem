@@ -71,7 +71,9 @@ class SemesterController extends Controller
      */
     public function show(semester $semester)
     {
-        //
+        return view("dashboard.all_update", [
+            "data" => $semester
+        ]);
     }
 
     /**
@@ -94,7 +96,15 @@ class SemesterController extends Controller
      */
     public function update(Request $request, semester $semester)
     {
-        //
+        $semester->find($request->id);
+        $semester->tanggal = $request->update_tanggal;
+        $semester->kode = $request->update_kode;
+        $semester->uraian = $request->update_uraian;
+        $semester->penerimaan = $request->update_penerimaan;
+        $semester->pengeluaran = $request->update_pengeluaran;
+        $semester->saldo = $request->update_saldo;
+        $semester->save();
+        return redirect("/dashboard/semester")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**

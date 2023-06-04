@@ -169,7 +169,7 @@
                                                 <button type="submit" onclick="return confirm('Yakin mau menghapus?')"
                                                     class="btn btn-danger badge">Hapus</button>
                                             </form>
-                                            <a href="/dashboard/pembayaran/{{ $semester->id }}"
+                                            <a href="/dashboard/semester/{{ $semester->id }}"
                                                 class="btn btn-warning badge tombol">
                                                 Update</a>
                                         </td>
