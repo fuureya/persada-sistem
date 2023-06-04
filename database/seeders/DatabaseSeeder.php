@@ -36,14 +36,14 @@ class DatabaseSeeder extends Seeder
             "nama_jurusan" => "Teknik Kendaraan Ringan (TKR)"
         ]);
         
-        PendaftarSmpModel::factory(40)->create();
-        pendaftarSmkModel::factory(40)->create();
-        pembayaran::factory(40)->create();
-        semester::factory(40)->create();
-        spp::factory(40)->create();
-        lab::factory(40)->create();
-        psg::factory(40)->create();
-        tunggakan::factory(40)->create();
-        pembangunan::factory(40)->create();
+        PendaftarSmpModel::factory(10)->create();
+        pendaftarSmkModel::factory(10)->create();
+        pembayaran::factory(10)->create();
+        semester::factory(10)->create();
+        spp::factory(10)->create();
+        lab::factory(10)->create();
+        psg::factory(10)->create();
+        tunggakan::factory(10)->create();
+        pembangunan::factory(10)->create();
     }
 }

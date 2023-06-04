@@ -9,5 +9,5 @@ class semester extends Model
 {
     use HasFactory;
     protected $table = "semester";
-    
+    protected $guarded = ["id"];
 }

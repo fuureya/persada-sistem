@@ -39,7 +39,28 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        return dd($request->all());
+        $validation = $request->validate([
+            "tanggal" => "required",
+            "kode" => "required|unique:semester",
+            "uraian" => "required",
+            "penerimaan" => "numeric",
+            "pengeluaran" => "numeric",
+            "saldo" => "required"
+        ]);
+
+        $insert = semester::create([
+            "tanggal" => $request->tanggal,
+            "kode" => $request->kode,
+            "uraian" => $request->uraian,
+            "penerimaan" => $request->penerimaan,
+            "pengeluaran" => $request->pengeluaran,
+            "saldo" => $request->saldo
+        ]);
+
+        if($insert){
+            return redirect("/dashboard/semester")->with(["success" => "Berhasil Menambah Data!"]);
+        }
+
     }
 
     /**
