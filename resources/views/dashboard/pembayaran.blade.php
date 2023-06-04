@@ -349,14 +349,14 @@
                                 <tfoot>
                                     <td colspan="4" class="text-center "><strong>Total</strong></td>
                                     <td></td>
-                                    <td>Uang Pembangunan : Rp. {{ $uang_pembangunan }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Total Pembangunan : Rp. {{ $uang_pembangunan }}</td>
+                                    <td>Total Spp : Rp. {{ $uang_spp }}</td>
+                                    <td>Total Lab : Rp. {{ $uang_lab }}</td>
+                                    <td>Total Semester Ganjil : Rp. {{ $semester_ganjil }}</td>
+                                    <td>Total Semester Genap : Rp. {{ $semester_genap }}</td>
+                                    <td>Total Uang PSG : Rp. {{ $uang_psg }}</td>
+                                    <td>Total Uang UAS : Rp. {{ $uang_uas }}</td>
+                                    <td>Total Tunggakan : Rp. {{ $uang_tunggakan }}</td>
                                     <td colspan="2"></td>
                                 </tfoot>
                             </table>

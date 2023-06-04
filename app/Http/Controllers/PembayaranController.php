@@ -6,8 +6,6 @@ use App\Models\pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use function GuzzleHttp\Promise\all;
-
 class PembayaranController extends Controller
 {
     /**
@@ -17,41 +15,69 @@ class PembayaranController extends Controller
      */
     public function index(Request $request)
     {
-
-
         $pembayaran = pembayaran::whereNotNull('nis');
+
+        
+
+        // variabel yang mengirim ke blade sebagai total
+        $totalPembangunan = $pembayaran->sum("uang_pembangunan");
+        $totalUangSpp = $pembayaran->sum("uang_spp");
+        $totalUangLab = $pembayaran->sum("uang_lab");
+        $totalSemesterGanjil = $pembayaran->sum("semester_ganjil");
+        $totalSemesterGenap = $pembayaran->sum("semester_genap");
+        $totalUangPsg = $pembayaran->sum("uang_psg");
+        $totalUangUas = $pembayaran->sum("uang_uas");
+        $totalTunggakan = $pembayaran->sum("tunggakan");
+
+        // rekap by bulan
+        if ($request->has("rekap")) {
+
+            // tangkap by rekap bulan
+            $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
+            $getBulan = $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
+
+            // mengirim data sesuai bulan
+            $totalPembangunan = $getBulan->sum("uang_pembangunan");
+            $totalUangSpp = $getBulan->sum("uang_spp");
+            $totalUangLab = $getBulan->sum("uang_lab");
+            $totalSemesterGanjil = $getBulan->sum("semester_ganjil");
+            $totalSemesterGenap = $getBulan->sum("semester_genap");
+            $totalUangPsg = $getBulan->sum("uang_psg");
+            $totalUangUas = $getBulan->sum("uang_uas");
+            $totalTunggakan = $getBulan->sum("tunggakan");
+        }
 
         // cari by nis
         if ($request->has("nis")) {
             // $data = DB::table("pembayaran")->where('nis','like',"%".$request->nis."%")->paginate();
             $pembayaran = $pembayaran->where('nis', 'like', "%" . $request->nis . "%");
+            $getNis = $pembayaran;
+
+            // mengirim data sesuai Nis
+            $totalPembangunan = $getNis->sum("uang_pembangunan");
+            $totalUangSpp = $getNis->sum("uang_spp");
+            $totalUangLab = $getNis->sum("uang_lab");
+            $totalSemesterGanjil = $getNis->sum("semester_ganjil");
+            $totalSemesterGenap = $getNis->sum("semester_genap");
+            $totalUangPsg = $getNis->sum("uang_psg");
+            $totalUangUas = $getNis->sum("uang_uas");
+            $totalTunggakan = $getNis->sum("tunggakan");
         }
 
-        // rekap by bulan
-        if ($request->has("rekap")) {
-            $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
-        }
-
-        // paginate awal
+        // paginate yang tampil 
         $data = $pembayaran->paginate(10);
 
-        // total uang pembangunan
-        function sumPembangunan()
-        {
-            $totalPembayaran = pembayaran::all();
-            // variabel nilai total uang pembayaran
-            $totalUangPembayaran = 0;
-
-            foreach ($totalPembayaran as $total) {
-                $totalUangPembayaran += (int)$total["uang_pembangunan"] + (int)$total["uang_pembangunan"];
-            }
-            return $totalUangPembayaran;
-        }
 
         return view("dashboard.pembayaran", [
             "data" => $data,
-            "uang_pembangunan" => sumPembangunan()
-
+            "uang_pembangunan" => $totalPembangunan,
+            "uang_spp" => $totalUangSpp,
+            "uang_lab" => $totalUangLab,
+            "semester_ganjil" => $totalSemesterGanjil,
+            "semester_genap" => $totalSemesterGenap,
+            "uang_psg" => $totalUangPsg,
+            "uang_uas" => $totalUangUas,
+            "uang_tunggakan" => $totalTunggakan
         ]);
     }
 
