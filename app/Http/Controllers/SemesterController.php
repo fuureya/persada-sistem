@@ -15,6 +15,7 @@ class SemesterController extends Controller
      */
     public function index()
     {
+       
         $data = DB::table('semester')->paginate(10);
         return view("dashboard.semester", [
             "data" => $data
