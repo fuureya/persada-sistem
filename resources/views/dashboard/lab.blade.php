@@ -102,18 +102,30 @@
                                     <th>Penerimaan</th>
                                     <th>Pengeluaran</th>
                                     <th>Saldo</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $spp)
+                                @foreach ($data as $lab)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $spp->tanggal }}</td>
-                                        <td>{{ $spp->kode }}</td>
-                                        <td>{{ $spp->uraian }}</td>
-                                        <td>{{ $spp->penerimaan }}</td>
-                                        <td>{{ $spp->pengeluaran }}</td>
-                                        <td>{{ $spp->saldo }}</td>
+                                        <td>{{ $lab->tanggal }}</td>
+                                        <td>{{ $lab->kode }}</td>
+                                        <td>{{ $lab->uraian }}</td>
+                                        <td>{{ $lab->penerimaan }}</td>
+                                        <td>{{ $lab->pengeluaran }}</td>
+                                        <td>{{ $lab->saldo }}</td>
+                                        <td class="text-center">
+                                            <form action="/dashboard/lab/{{ $lab->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Yakin mau menghapus?')"
+                                                    class="btn btn-danger badge">Hapus</button>
+                                            </form>
+                                            <a href="/dashboard/lab/{{ $lab->id }}"
+                                                class="btn btn-warning badge tombol">
+                                                Update</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

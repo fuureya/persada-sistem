@@ -101,6 +101,7 @@ class LabController extends Controller
      */
     public function destroy(lab $lab)
     {
-        //
+        $lab->delete();
+        return redirect("/dashboard/lab");
     }
 }
