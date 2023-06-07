@@ -67,7 +67,9 @@ class LabController extends Controller
      */
     public function show(lab $lab)
     {
-        //
+        return view("dashboard.lab_update", [
+            "data" => $lab
+        ]);
     }
 
     /**
@@ -90,7 +92,16 @@ class LabController extends Controller
      */
     public function update(Request $request, lab $lab)
     {
-        //
+        $lab->find($request->id);
+        $lab->tanggal = $request->update_tanggal;
+        $lab->kode = $request->update_kode;
+        $lab->uraian = $request->update_uraian;
+        $lab->penerimaan = $request->update_penerimaan;
+        $lab->pengeluaran = $request->update_pengeluaran;
+        $lab->saldo = $request->update_saldo;
+        $lab->save();
+
+        return redirect("/dashboard/lab")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**
