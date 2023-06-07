@@ -40,7 +40,7 @@ class LabController extends Controller
     {
         $validation = $request->validate([
             "tanggal" => "required",
-            "kode" => "required|unique:semester",
+            "kode" => "required|unique:lab",
             "uraian" => "required",
             "penerimaan" => "numeric",
             "pengeluaran" => "numeric",

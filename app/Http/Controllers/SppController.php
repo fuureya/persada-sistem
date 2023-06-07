@@ -39,7 +39,7 @@ class SppController extends Controller
     {
         $validation = $request->validate([
             "tanggal" => "required",
-            "kode" => "required|unique:semester",
+            "kode" => "required|unique:spp",
             "uraian" => "required",
             "penerimaan" => "numeric",
             "pengeluaran" => "numeric",
