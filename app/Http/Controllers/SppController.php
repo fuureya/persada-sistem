@@ -66,7 +66,9 @@ class SppController extends Controller
      */
     public function show(spp $spp)
     {
-        //
+        return view("dashboard.spp_update", [
+            "data" => $spp
+        ]);
     }
 
     /**
@@ -77,7 +79,7 @@ class SppController extends Controller
      */
     public function edit(spp $spp)
     {
-        //
+        
     }
 
     /**
@@ -89,7 +91,16 @@ class SppController extends Controller
      */
     public function update(Request $request, spp $spp)
     {
-        //
+        $spp->find($request->id);
+        $spp->tanggal = $request->update_tanggal;
+        $spp->kode = $request->update_kode;
+        $spp->uraian = $request->update_uraian;
+        $spp->penerimaan = $request->update_penerimaan;
+        $spp->pengeluaran = $request->update_pengeluaran;
+        $spp->saldo = $request->update_saldo;
+        $spp->save();
+
+        return redirect("/dashboard/spp")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**

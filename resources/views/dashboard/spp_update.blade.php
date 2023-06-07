@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                           <div class="col-12">
-                            <form method="post" action="/dashboard/semester/{{ $data->id }}">
+                            <form method="post" action="/dashboard/spp/{{ $data->id }}">
                               @method("PATCH")
                               @csrf
                               <input type="hidden" value="{{$data->id}}">
@@ -50,13 +50,7 @@
                                   <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                               </div>
-                              <div class="form-group">
-                                <label for="saldo">Masukkan Saldo</label>
-                                <input type="number" class="form-control @error('saldo') is-invalid @enderror" id="saldo" name="update_saldo" value="{{ $data->saldo }}">
-                                @error('saldo')
-                                  <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                              </div>
+                              
                               
                                   <button type="button" class="btn btn-secondary"
                                       data-dismiss="modal">Close</button>
