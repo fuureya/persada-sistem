@@ -67,7 +67,9 @@ class PsgController extends Controller
      */
     public function show(psg $psg)
     {
-        //
+        return view("dashboard.psg_update", [
+            "data" => $psg
+        ]);
     }
 
     /**
@@ -78,7 +80,7 @@ class PsgController extends Controller
      */
     public function edit(psg $psg)
     {
-        //
+        
     }
 
     /**
@@ -90,7 +92,16 @@ class PsgController extends Controller
      */
     public function update(Request $request, psg $psg)
     {
-        //
+        $psg->find($request->id);
+        $psg->tanggal = $request->update_tanggal;
+        $psg->kode = $request->update_kode;
+        $psg->uraian = $request->update_uraian;
+        $psg->penerimaan = $request->update_penerimaan;
+        $psg->pengeluaran = $request->update_pengeluaran;
+        $psg->saldo = $request->update_saldo;
+        $psg->save();
+
+        return redirect("/dashboard/lab")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**
@@ -101,6 +112,7 @@ class PsgController extends Controller
      */
     public function destroy(psg $psg)
     {
-        //
+        $psg->delete();
+        return redirect("/dashboard/psg");
     }
 }
