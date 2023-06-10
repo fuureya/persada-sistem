@@ -38,7 +38,25 @@ class PsgController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "tanggal" => "required",
+            "kode" => "required|unique:psg",
+            "uraian" => "required",
+            "penerimaan" => "numeric",
+            "pengeluaran" => "numeric",
+        ]);
+
+        $insert = psg::create([
+            "tanggal" => $request->tanggal,
+            "kode" => $request->kode,
+            "uraian" => $request->uraian,
+            "penerimaan" => $request->penerimaan,
+            "pengeluaran" => $request->pengeluaran,
+        ]);
+
+        if($insert){
+            return redirect("/dashboard/psg")->with(["success" => "Berhasil Menambah Data!"]);
+        }
     }
 
     /**

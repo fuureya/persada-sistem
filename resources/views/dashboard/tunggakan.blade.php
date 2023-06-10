@@ -10,7 +10,7 @@
                         {{-- modal section --}}
                         <div class="col-6">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertData">
+                            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#insertData">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
 

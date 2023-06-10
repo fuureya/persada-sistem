@@ -9,4 +9,5 @@ class psg extends Model
 {
     use HasFactory;
     protected $table = "psg";
+    protected $guarded = ["id"];
 }

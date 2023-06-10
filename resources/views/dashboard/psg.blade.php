@@ -10,7 +10,7 @@
                         {{-- modal section --}}
                         <div class="col-6">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertData">
+                            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#insertData">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
 
@@ -26,41 +26,47 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="/dashboard/pembayaran">
-                                                @method("POST")
+                                            <form method="post" action="/dashboard/psg">
+                                                @method('POST')
                                                 @csrf
-                                                
+
                                                 <div class="form-group">
-                                                  <label for="tanggal_bayar">Tanggal</label>
-                                                  <input type="date" class="form-control" id="tanggal">
+                                                    <label for="tanggal_bayar">Tanggal</label>
+                                                    <input type="date" class="form-control" id="tanggal"
+                                                        name="tanggal">
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="kode">Masukkan Kode</label>
-                                                  <input type="text" class="form-control" id="kode" name="kode">
+                                                    <label for="kode">Masukkan Kode</label>
+                                                    <input type="text" class="form-control" id="kode"
+                                                        name="kode">
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="uraian">Masukkan Uraian</label>
-                                                  <input type="number" class="form-control" id="uraian" name="uraian">
+                                                    <label for="uraian">Masukkan Uraian</label>
+                                                    <input type="text" class="form-control" id="uraian"
+                                                        name="uraian">
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="penerimaan">Masukkan Penerimaan</label>
-                                                  <input type="number" class="form-control" id="penerimaan" name="penerimaan">
+                                                    <label for="penerimaan">Masukkan Penerimaan</label>
+                                                    <input type="number" class="form-control" id="penerimaan"
+                                                        name="penerimaan">
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="pengeluaran">Masukkan Pengeluaran</label>
-                                                  <input type="number" class="form-control" id="pengeluaran" name="pengeluaran">
+                                                    <label for="pengeluaran">Masukkan Pengeluaran</label>
+                                                    <input type="number" class="form-control" id="pengeluaran"
+                                                        name="pengeluaran">
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="uang_lab">Masukkan Saldo</label>
-                                                  <input type="number" class="form-control" id="uang_lab" name="uang_lab">
+                                                    <label for="uang_lab">Masukkan Saldo</label>
+                                                    <input type="number" class="form-control" id="uang_lab"
+                                                        name="uang_lab">
                                                 </div>
-                                                
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                                
-                                              </form>
-                                              
+
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -83,15 +89,15 @@
                             </thead>
                             <tbody>
                                 @foreach ($data as $spp)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $spp->tanggal }}</td>
-                                    <td>{{ $spp->kode }}</td>
-                                    <td>{{ $spp->uraian }}</td>
-                                    <td>{{ $spp->penerimaan}}</td>
-                                    <td>{{ $spp->pengeluaran }}</td>
-                                    <td>{{ $spp->saldo }}</td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $spp->tanggal }}</td>
+                                        <td>{{ $spp->kode }}</td>
+                                        <td>{{ $spp->uraian }}</td>
+                                        <td>{{ $spp->penerimaan }}</td>
+                                        <td>{{ $spp->pengeluaran }}</td>
+                                        <td>{{ $spp->saldo }}</td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -103,4 +109,17 @@
             </div>
         </div>
     </div>
+
+
+    @if (session('success'))
+        <script>
+            alert("Berhasil Menambah Data")
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            alert("Gagal Menambah Data, Cek di panel tambah")
+        </script>
+    @endif
 @endsection
