@@ -38,7 +38,25 @@ class TunggakanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "tanggal" => "required",
+            "kode" => "required|unique:tunggakan",
+            "uraian" => "required",
+            "penerimaan" => "numeric",
+            "pengeluaran" => "numeric",
+        ]);
+
+        $insert = tunggakan::create([
+            "tanggal" => $request->tanggal,
+            "kode" => $request->kode,
+            "uraian" => $request->uraian,
+            "penerimaan" => $request->penerimaan,
+            "pengeluaran" => $request->pengeluaran,
+        ]);
+
+        if($insert){
+            return redirect("/dashboard/tunggakan")->with(["success" => "Berhasil Menambah Data!"]);
+        }
     }
 
     /**
@@ -49,7 +67,9 @@ class TunggakanController extends Controller
      */
     public function show(tunggakan $tunggakan)
     {
-        //
+        return view("dashboard.tunggakan_update", [
+            "data" => $tunggakan
+        ]);
     }
 
     /**
@@ -72,7 +92,15 @@ class TunggakanController extends Controller
      */
     public function update(Request $request, tunggakan $tunggakan)
     {
-        //
+        $tunggakan->find($request->id);
+        $tunggakan->tanggal = $request->update_tanggal;
+        $tunggakan->kode = $request->update_kode;
+        $tunggakan->uraian = $request->update_uraian;
+        $tunggakan->penerimaan = $request->update_penerimaan;
+        $tunggakan->pengeluaran = $request->update_pengeluaran;
+        $tunggakan->save();
+
+        return redirect("/dashboard/tunggakan")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**

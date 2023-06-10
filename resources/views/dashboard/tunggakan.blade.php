@@ -26,41 +26,70 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post" action="/dashboard/pembayaran">
-                                                @method("POST")
+                                            <form method="post" action="/dashboard/tunggakan">
+                                                @method('POST')
                                                 @csrf
-                                                
+
                                                 <div class="form-group">
-                                                  <label for="tanggal_bayar">Tanggal</label>
-                                                  <input type="date" class="form-control" id="tanggal">
+                                                    <label for="tanggal_bayar">Tanggal</label>
+                                                    <input type="date"
+                                                        class="form-control @error('tanggal')
+                                                      is-invalid
+                                                  @enderror"
+                                                        id="tanggal" name="tanggal" value="{{ old("tanggal") }}">
+                                                    @error('tanggal')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="kode">Masukkan Kode</label>
-                                                  <input type="text" class="form-control" id="kode" name="kode">
+                                                    <label for="kode">Masukkan Kode</label>
+                                                    <input type="text"
+                                                        class="form-control @error('kode') is-invalid @enderror"
+                                                        id="kode" name="kode" value="{{ old("kode") }}">
+                                                    @error('kode')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="uraian">Masukkan Uraian</label>
-                                                  <input type="number" class="form-control" id="uraian" name="uraian">
+                                                    <label for="uraian">Masukkan Uraian</label>
+                                                    <input type="text"
+                                                        class="form-control @error('uraian')
+                                                      is-invalid
+                                                  @enderror "
+                                                        id="uraian" name="uraian" value="{{ old("uraian") }}">
+                                                    @error('uraian')
+                                                        <div class="alert alert-danger"> {{ $message }} </div>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                  <label for="penerimaan">Masukkan Penerimaan</label>
-                                                  <input type="number" class="form-control" id="penerimaan" name="penerimaan">
+                                                    <label for="penerimaan">Masukkan Penerimaan</label>
+                                                    <input type="number"
+                                                        class="form-control @error('penerimaan')
+                                                  is-invalid
+                                              @enderror"
+                                                        id="penerimaan" name="penerimaan" value="{{ old("penerimaan") }}">
                                                 </div>
+                                                @error('penerimaan')
+                                                    <div class="alert alert-danger"> {{ $message }} </div>
+                                                @enderror
                                                 <div class="form-group">
-                                                  <label for="pengeluaran">Masukkan Pengeluaran</label>
-                                                  <input type="number" class="form-control" id="pengeluaran" name="pengeluaran">
+                                                    <label for="pengeluaran">Masukkan Pengeluaran</label>
+                                                    <input type="number"
+                                                        class="form-control @error('pengeluaran')
+                                                      is-invalid
+                                                  @enderror"
+                                                        id="pengeluaran" name="pengeluaran" value="{{ old("pengeluaran") }}">
+                                                    @error('pengeluaran')
+                                                        <div class="alert alert-danger"> {{ $message }} </div>
+                                                    @enderror
                                                 </div>
-                                                <div class="form-group">
-                                                  <label for="uang_lab">Masukkan Saldo</label>
-                                                  <input type="number" class="form-control" id="uang_lab" name="uang_lab">
-                                                </div>
-                                                
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                                
-                                              </form>
-                                              
+
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -79,19 +108,31 @@
                                     <th>Penerimaan</th>
                                     <th>Pengeluaran</th>
                                     <th>Saldo</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $spp)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $spp->tanggal }}</td>
-                                    <td>{{ $spp->kode }}</td>
-                                    <td>{{ $spp->uraian }}</td>
-                                    <td>{{ $spp->penerimaan}}</td>
-                                    <td>{{ $spp->pengeluaran }}</td>
-                                    <td>{{ $spp->saldo }}</td>
-                                </tr>
+                                @foreach ($data as $tunggakan)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $tunggakan->tanggal }}</td>
+                                        <td>{{ $tunggakan->kode }}</td>
+                                        <td>{{ $tunggakan->uraian }}</td>
+                                        <td>{{ $tunggakan->penerimaan }}</td>
+                                        <td>{{ $tunggakan->pengeluaran }}</td>
+                                        <td>{{ $tunggakan->saldo }}</td>
+                                        <td class="text-center">
+                                            <form action="/dashboard/tunggakan/{{ $tunggakan->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Yakin mau menghapus?')"
+                                                    class="btn btn-danger badge">Hapus</button>
+                                            </form>
+                                            <a href="/dashboard/tunggakan/{{ $tunggakan->id }}"
+                                                class="btn btn-warning badge tombol">
+                                                Update</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -103,4 +144,16 @@
             </div>
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            alert("Berhasil Menambah Data")
+        </script>
+    @endif
+
+    @if ($errors->any())
+        <script>
+            alert("Gagal Menambah Data, Cek di panel tambah")
+        </script>
+    @endif
 @endsection

@@ -10,7 +10,7 @@
                     <div class="container">
                         <div class="row">
                           <div class="col-12">
-                            <form method="post" action="/dashboard/spp/{{ $data->id }}">
+                            <form method="post" action="/dashboard/tunggakan/{{ $data->id }}">
                               @method("PATCH")
                               @csrf
                               <input type="hidden" value="{{$data->id}}">
