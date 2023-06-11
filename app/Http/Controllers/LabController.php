@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\lab;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class LabController extends Controller
 {
@@ -13,10 +12,41 @@ class LabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // jika kode tidak null
+        $spp = lab::whereNotNull("kode");
+
+        // megnirim nilai sum ke blade
+        $totalPenerimaan = $spp->sum("penerimaan");
+        $totalPengeluaran = $spp->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
+        // rekap sesuai dengan bulan
+        if ($request->has("rekap")) {
+            $spp->whereMonth("tanggal", '=', $request->rekap);
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $spp->sum("penerimaan");
+            $totalPengeluaran = $spp->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        // cari by kode pengeluaran/pemasukan
+        if ($request->has("kode")) {
+            $spp = $spp->where('kode', 'like', "%" . $request->kode . "%");
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $spp->sum("penerimaan");
+            $totalPengeluaran = $spp->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        $data = $spp->paginate(10);
+
         return view("dashboard.lab", [
-            "data" => DB::table("lab")->paginate(10)
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
     }
 
@@ -42,8 +72,8 @@ class LabController extends Controller
             "tanggal" => "required",
             "kode" => "required|unique:lab",
             "uraian" => "required",
-            "penerimaan" => "numeric",
-            "pengeluaran" => "numeric",
+            "penerimaan" => "required|numeric",
+            "pengeluaran" => "required|numeric",
         ]);
 
         $insert = lab::create([
