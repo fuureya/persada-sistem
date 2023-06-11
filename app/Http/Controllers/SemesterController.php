@@ -23,6 +23,11 @@ class SemesterController extends Controller
             $semester->whereMonth("tanggal", '=' , $request->rekap);
         }
 
+        // cari by kode
+        if($request->has("kode")){
+            $semester = $semester->where('kode', 'like', "%" . $request->kode . "%");
+        }
+
         // view biasa
         $data = $semester->paginate(10);
         return view("dashboard.semester", [
@@ -31,7 +36,7 @@ class SemesterController extends Controller
 
         
 
-        // cari by kode
+        
 
 
     }
