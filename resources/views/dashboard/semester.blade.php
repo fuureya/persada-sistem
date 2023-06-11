@@ -12,7 +12,7 @@
                         <div class="col-6">
                             <div class="d-flex">
                                 {{-- button rekap --}}
-                                <form action="/dashboard/pembayaran" method="GET" class="pr-3 pl-3">
+                                <form action="/dashboard/semester" method="GET" class="pr-3 pl-3">
                                     <select class="form-select" name="rekap">
                                         <option selected>Rekap By Bulan</option>
                                         <option value="1">Januari</option>
@@ -120,8 +120,8 @@
                         {{-- end modal --}}
 
                         <div class="col-6">
-                            <div class="cari ">
-                                <form action="/dashboard/pembayaran" action="GET"
+                            <div class="cari">
+                                <form action="/dashboard/semester" action="GET"
                                     class="d-flex justify-content-end form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                     <div class="input-group">
                                         <input type="search" class="form-control bg-light border-0 small"

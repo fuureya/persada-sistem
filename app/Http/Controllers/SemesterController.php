@@ -13,13 +13,27 @@ class SemesterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       
-        $data = DB::table('semester')->paginate(10);
+
+        $semester = semester::whereNotNull('kode');
+
+        // rekap by bulan
+        if($request->has("rekap")){
+            $semester->whereMonth("tanggal", '=' , $request->rekap);
+        }
+
+        // view biasa
+        $data = $semester->paginate(10);
         return view("dashboard.semester", [
             "data" => $data
         ]);
+
+        
+
+        // cari by kode
+
+
     }
 
     /**
