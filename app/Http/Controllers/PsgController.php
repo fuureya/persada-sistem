@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\psg;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PsgController extends Controller
 {
@@ -13,10 +12,41 @@ class PsgController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // jika kode tidak null
+        $psg = psg::whereNotNull("kode");
+
+        // megnirim nilai sum ke blade
+        $totalPenerimaan = $psg->sum("penerimaan");
+        $totalPengeluaran = $psg->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
+        // rekap sesuai dengan bulan
+        if ($request->has("rekap")) {
+            $psg->whereMonth("tanggal", '=', $request->rekap);
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $psg->sum("penerimaan");
+            $totalPengeluaran = $psg->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        // cari by kode pengeluaran/pemasukan
+        if ($request->has("kode")) {
+            $psg = $psg->where('kode', 'like', "%" . $request->kode . "%");
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $psg->sum("penerimaan");
+            $totalPengeluaran = $psg->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        $data = $psg->paginate(10);
+
         return view("dashboard.psg", [
-            "data" => DB::table("psg")->paginate(10)
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
     }
 
