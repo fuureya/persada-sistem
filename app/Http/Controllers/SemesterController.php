@@ -16,10 +16,10 @@ class SemesterController extends Controller
     public function index(Request $request)
     {
 
+        // jika di tabel kode tidak null
         $semester = semester::whereNotNull('kode');
 
         // variabel yang mengirim ke blade semester
-
         $totalPenerimaan = $semester->sum("penerimaan");
         $totalPengeluaran = $semester->sum("pengeluaran");
         $totalSaldo = $totalPenerimaan - $totalPengeluaran;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\spp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class SppController extends Controller
 {
     /**
@@ -12,10 +13,42 @@ class SppController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        // jika kode tidak null
+        $spp = spp::whereNotNull("kode");
+
+        // megnirim nilai sum ke blade
+        $totalPenerimaan = $spp->sum("penerimaan");
+        $totalPengeluaran = $spp->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
+        // rekap sesuai dengan bulan
+        if ($request->has("rekap")) {
+            $spp->whereMonth("tanggal", '=', $request->rekap);
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $spp->sum("penerimaan");
+            $totalPengeluaran = $spp->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        // cari by kode pengeluaran/pemasukan
+        if ($request->has("kode")) {
+            $spp = $spp->where('kode', 'like', "%" . $request->kode . "%");
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $spp->sum("penerimaan");
+            $totalPengeluaran = $spp->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        $data = $spp->paginate(10);
+
         return view("dashboard.spp", [
-            "data" => DB::table('spp')->paginate(10)
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
     }
 
@@ -53,7 +86,7 @@ class SppController extends Controller
             "pengeluaran" => $request->pengeluaran,
         ]);
 
-        if($insert){
+        if ($insert) {
             return redirect("/dashboard/spp")->with(["success" => "Berhasil Menambah Data!"]);
         }
     }
@@ -79,7 +112,6 @@ class SppController extends Controller
      */
     public function edit(spp $spp)
     {
-        
     }
 
     /**
