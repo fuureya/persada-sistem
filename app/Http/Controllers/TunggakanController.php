@@ -111,6 +111,7 @@ class TunggakanController extends Controller
      */
     public function destroy(tunggakan $tunggakan)
     {
-        //
+        $tunggakan->delete();
+        return redirect("/dashboard/tunggakan");
     }
 }

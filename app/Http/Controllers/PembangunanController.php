@@ -38,7 +38,25 @@ class PembangunanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            "tanggal" => "required",
+            "kode" => "required|unique:pembangunan",
+            "uraian" => "required",
+            "penerimaan" => "numeric",
+            "pengeluaran" => "numeric",
+        ]);
+
+        $insert = pembangunan::create([
+            "tanggal" => $request->tanggal,
+            "kode" => $request->kode,
+            "uraian" => $request->uraian,
+            "penerimaan" => $request->penerimaan,
+            "pengeluaran" => $request->pengeluaran,
+        ]);
+
+        if($insert){
+            return redirect("/dashboard/pembangunan")->with(["success" => "Berhasil Menambah Data!"]);
+        }
     }
 
     /**
@@ -49,7 +67,9 @@ class PembangunanController extends Controller
      */
     public function show(pembangunan $pembangunan)
     {
-        //
+        return view("dashboard.pembangunan_update", [
+            "data" => $pembangunan
+        ]);
     }
 
     /**
@@ -72,7 +92,16 @@ class PembangunanController extends Controller
      */
     public function update(Request $request, pembangunan $pembangunan)
     {
-        //
+        $pembangunan->find($request->id);
+        $pembangunan->tanggal = $request->update_tanggal;
+        $pembangunan->kode = $request->update_kode;
+        $pembangunan->uraian = $request->update_uraian;
+        $pembangunan->penerimaan = $request->update_penerimaan;
+        $pembangunan->pengeluaran = $request->update_pengeluaran;
+        $pembangunan->saldo = $request->update_saldo;
+        $pembangunan->save();
+
+        return redirect("/dashboard/pembangunan")->with(["success" => "berhasil mengubah data"]);
     }
 
     /**
@@ -83,6 +112,7 @@ class PembangunanController extends Controller
      */
     public function destroy(pembangunan $pembangunan)
     {
-        //
+        $pembangunan->delete();
+        return redirect("dashboard/pembangunan");
     }
 }
