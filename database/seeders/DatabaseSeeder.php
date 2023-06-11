@@ -38,12 +38,12 @@ class DatabaseSeeder extends Seeder
         
         PendaftarSmpModel::factory(10)->create();
         pendaftarSmkModel::factory(10)->create();
-        pembayaran::factory(10)->create();
-        semester::factory(10)->create();
-        spp::factory(10)->create();
-        lab::factory(10)->create();
-        psg::factory(10)->create();
-        tunggakan::factory(10)->create();
-        pembangunan::factory(10)->create();
+        pembayaran::factory(100)->create();
+        semester::factory(100)->create();
+        spp::factory(100)->create();
+        lab::factory(100)->create();
+        psg::factory(100)->create();
+        tunggakan::factory(100)->create();
+        pembangunan::factory(100)->create();
     }
 }

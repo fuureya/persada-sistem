@@ -18,27 +18,38 @@ class SemesterController extends Controller
 
         $semester = semester::whereNotNull('kode');
 
+        // variabel yang mengirim ke blade semester
+
+        $totalPenerimaan = $semester->sum("penerimaan");
+        $totalPengeluaran = $semester->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
         // rekap by bulan
-        if($request->has("rekap")){
-            $semester->whereMonth("tanggal", '=' , $request->rekap);
+        if ($request->has("rekap")) {
+            $semester->whereMonth("tanggal", '=', $request->rekap);
+            // akumulasi saldo
+            $totalPenerimaan = $semester->sum("penerimaan");
+            $totalPengeluaran = $semester->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
         }
 
         // cari by kode
-        if($request->has("kode")){
+        if ($request->has("kode")) {
             $semester = $semester->where('kode', 'like', "%" . $request->kode . "%");
+            // akumulasi saldo
+            $totalPenerimaan = $semester->sum("penerimaan");
+            $totalPengeluaran = $semester->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
         }
 
         // view biasa
         $data = $semester->paginate(10);
         return view("dashboard.semester", [
-            "data" => $data
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
-
-        
-
-        
-
-
     }
 
     /**
@@ -74,13 +85,11 @@ class SemesterController extends Controller
             "uraian" => $request->uraian,
             "penerimaan" => $request->penerimaan,
             "pengeluaran" => $request->pengeluaran,
-            "saldo" => $request->saldo
         ]);
 
-        if($insert){
+        if ($insert) {
             return redirect("/dashboard/semester")->with(["success" => "Berhasil Menambah Data!"]);
         }
-
     }
 
     /**
@@ -122,7 +131,6 @@ class SemesterController extends Controller
         $semester->uraian = $request->update_uraian;
         $semester->penerimaan = $request->update_penerimaan;
         $semester->pengeluaran = $request->update_pengeluaran;
-        $semester->saldo = $request->update_saldo;
         $semester->save();
         return redirect("/dashboard/semester")->with(["anjay" => "berhasil mengubah data"]);
     }

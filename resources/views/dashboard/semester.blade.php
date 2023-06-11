@@ -148,7 +148,6 @@
                                     <th>Uraian</th>
                                     <th>Penerimaan</th>
                                     <th>Pengeluaran</th>
-                                    <th>Saldo</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -159,15 +158,15 @@
                                         <td>{{ $semester->tanggal }}</td>
                                         <td>{{ $semester->kode }}</td>
                                         <td>{{ $semester->uraian }}</td>
-                                        <td>{{ $semester->penerimaan }}</td>
-                                        <td>{{ $semester->pengeluaran }}</td>
-                                        <td>{{ $semester->saldo }}</td>
+                                        <td>Rp. {{ $semester->penerimaan }}</td>
+                                        <td>Rp. {{ $semester->pengeluaran }}</td>
+                                        
                                         <td class="text-center">
                                             <form action="/dashboard/semester/{{ $semester->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Yakin mau menghapus?')"
-                                                    class="btn btn-danger badge">Hapus</button>
+                                                    class="btn btn-danger badge">Delete</button>
                                             </form>
                                             <a href="/dashboard/semester/{{ $semester->id }}"
                                                 class="btn btn-warning badge tombol">
@@ -176,6 +175,12 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <td colspan="4" class="text-center "><strong>Total</strong></td>
+                                <td class="text-center"><strong>Total Penerimaan: Rp. {{$totalPenerimaan}} </strong></td>
+                                <td class="text-center"><strong>Total Pengeluaran: Rp. {{$totalPengeluaran}} </strong></td>
+                                <td class="text-center"><strong>Total Saldo: Rp. {{$totalSaldo}} </strong></td>
+                            </tfoot>
                         </table>
                         <div class="btn-links d-flex justify-content-center">
                             {{ $data->links() }}
