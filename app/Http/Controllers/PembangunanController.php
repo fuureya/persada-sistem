@@ -13,10 +13,41 @@ class PembangunanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // jika kode tidak null
+        $pembangunan = pembangunan::whereNotNull("kode");
+
+        // megnirim nilai sum ke blade
+        $totalPenerimaan = $pembangunan->sum("penerimaan");
+        $totalPengeluaran = $pembangunan->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
+        // rekap sesuai dengan bulan
+        if ($request->has("rekap")) {
+            $pembangunan->whereMonth("tanggal", '=', $request->rekap);
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $pembangunan->sum("penerimaan");
+            $totalPengeluaran = $pembangunan->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        // cari by kode pengeluaran/pemasukan
+        if ($request->has("kode")) {
+            $pembangunan = $pembangunan->where('kode', 'like', "%" . $request->kode . "%");
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $pembangunan->sum("penerimaan");
+            $totalPengeluaran = $pembangunan->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        $data = $pembangunan->paginate(10);
+
         return view("dashboard.pembangunan", [
-            "data" => DB::table("pembangunan")->paginate(10)
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
     }
 
