@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\tunggakan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TunggakanController extends Controller
 {
@@ -13,10 +12,41 @@ class TunggakanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // jika kode tidak null
+        $tunggakan = tunggakan::whereNotNull("kode");
+
+        // megnirim nilai sum ke blade
+        $totalPenerimaan = $tunggakan->sum("penerimaan");
+        $totalPengeluaran = $tunggakan->sum("pengeluaran");
+        $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+
+        // rekap sesuai dengan bulan
+        if ($request->has("rekap")) {
+            $tunggakan->whereMonth("tanggal", '=', $request->rekap);
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $tunggakan->sum("penerimaan");
+            $totalPengeluaran = $tunggakan->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        // cari by kode pengeluaran/pemasukan
+        if ($request->has("kode")) {
+            $tunggakan = $tunggakan->where('kode', 'like', "%" . $request->kode . "%");
+            // megnirim nilai sum ke blade
+            $totalPenerimaan = $tunggakan->sum("penerimaan");
+            $totalPengeluaran = $tunggakan->sum("pengeluaran");
+            $totalSaldo = $totalPenerimaan - $totalPengeluaran;
+        }
+
+        $data = $tunggakan->paginate(10);
+
         return view("dashboard.tunggakan", [
-            "data" => DB::table("tunggakan")->paginate(10)
+            "data" => $data,
+            "totalPenerimaan" => $totalPenerimaan,
+            "totalPengeluaran" => $totalPengeluaran,
+            "totalSaldo" => $totalSaldo
         ]);
     }
 

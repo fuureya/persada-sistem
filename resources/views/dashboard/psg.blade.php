@@ -1,7 +1,7 @@
 @extends('dashboard.partials.inti')
 
 @section('content')
-    <h1 class="text-center">psg Panel</h1>
+    <h1 class="text-center">PSG Panel</h1>
     <div class="row">
         <div class="col-12">
             <div class="card shadow mb-4">
