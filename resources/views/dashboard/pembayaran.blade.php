@@ -37,7 +37,7 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insertData">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
-                                <a href="/pembayaran/export" class="btn btn-success ml-3"> Export excel</a>
+                                <a href="/pembayaran/export/{{$no_rekap}}" class="btn btn-success ml-3"> Export excel</a>
                                 <a href="#" class="btn btn-danger ml-3"> Export pdf</a>
                                 <!-- Modal -->
                                 <div class="modal fade" id="insertData" tabindex="-1" aria-labelledby="exampleModalLabel"

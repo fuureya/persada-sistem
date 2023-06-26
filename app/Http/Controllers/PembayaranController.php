@@ -33,7 +33,6 @@ class PembayaranController extends Controller
             // tangkap by rekap bulan
             $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
             $getBulan = $pembayaran->whereMonth("tanggal_bayar", '=', $request->rekap);
-
             // mengirim data sesuai bulan
             $totalPembangunan = $getBulan->sum("uang_pembangunan");
             $totalUangSpp = $getBulan->sum("uang_spp");
@@ -74,7 +73,8 @@ class PembayaranController extends Controller
             "semester_genap" => $totalSemesterGenap,
             "uang_psg" => $totalUangPsg,
             "uang_uas" => $totalUangUas,
-            "uang_tunggakan" => $totalTunggakan
+            "uang_tunggakan" => $totalTunggakan,
+            "no_rekap" => $request->rekap
         ]);
     }
 

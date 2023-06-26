@@ -50,4 +50,4 @@ Route::resource('/dashboard/pembangunan', PembangunanController::class);
 
 
 // export excel
-Route::get('/pembayaran/export', [ExportController::class, "exportPembayaran"]);
+Route::get('/pembayaran/export/{no_rekap}', [ExportController::class, "exportPembayaran"]);

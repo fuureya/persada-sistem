@@ -3,15 +3,22 @@
 namespace App\Exports;
 
 use App\Models\pembayaran;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\Exportable;
 
-class PembayaranExport implements FromCollection
+class pembayaranExport implements FromQuery
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    use Exportable;
+
+    public $bulan;
+
+    public function __construct($month)
     {
-        return pembayaran::all();
+        $this->bulan = $month;
+    }
+
+    public function query()
+    {
+        return pembayaran::query()->whereMonth('tanggal_bayar', $this->bulan);
     }
 }
