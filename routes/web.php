@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\PembangunanController;
 use App\Http\Controllers\PembayaranController;
@@ -46,3 +47,7 @@ Route::resource('/dashboard/lab', LabController::class);
 Route::resource('/dashboard/psg', PsgController::class);
 Route::resource('/dashboard/tunggakan', TunggakanController::class);
 Route::resource('/dashboard/pembangunan', PembangunanController::class);
+
+
+// export excel
+Route::get('/pembayaran/export', [ExportController::class, "exportPembayaran"]);

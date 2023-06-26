@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pembayaran;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class PembayaranController extends Controller
 {
@@ -47,7 +47,6 @@ class PembayaranController extends Controller
 
         // cari by nis
         if ($request->has("nis")) {
-            // $data = DB::table("pembayaran")->where('nis','like',"%".$request->nis."%")->paginate();
             $pembayaran = $pembayaran->where('nis', 'like', "%" . $request->nis . "%");
             $getNis = $pembayaran;
 
@@ -218,4 +217,8 @@ class PembayaranController extends Controller
         $delete->delete();
         return redirect("dashboard/pembayaran");
     }
+
+
+    
+
 }
