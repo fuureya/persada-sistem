@@ -9,7 +9,7 @@
 
                     <div class="row">
                         {{-- modal section --}}
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="d-flex">
                                 {{-- button rekap --}}
                                 <form action="/dashboard/semester" method="GET" class="pr-3 pl-3">
@@ -37,7 +37,11 @@
                                     data-target="#insertData">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+
+                                <a href="/semester/export/{{$no_rekap}}" class="btn btn-success ml-3"> Export excel</a>
+                            <a href="#" class="btn btn-danger ml-3"> Export pdf</a>
                             </div>
+                            
 
                             <!-- Modal -->
                             <div class="modal fade" id="insertData" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -119,7 +123,7 @@
                         </div>
                         {{-- end modal --}}
 
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="cari">
                                 <form action="/dashboard/semester" action="GET"
                                     class="d-flex justify-content-end form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
