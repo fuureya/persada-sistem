@@ -6,6 +6,7 @@ use App\Exports\PembayaranExport;
 use App\Exports\SemesterExport;
 use App\Exports\SppExport;
 use App\Exports\LabExport;
+use App\Exports\PsgExport;
 
 class ExportController extends Controller
 {
@@ -32,4 +33,10 @@ class ExportController extends Controller
     {
         return (new LabExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
     }
+    
+    public function exportPsg() 
+    {
+        return (new PsgExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
+    }
+    
 }

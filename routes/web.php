@@ -54,3 +54,4 @@ Route::get('/pembayaran/export/{no_rekap}', [ExportController::class, "exportPem
 Route::get('/semester/export/{no_rekap}', [ExportController::class, "exportSemester"]);
 Route::get('/spp/export/{no_rekap}', [ExportController::class, "exportSpp"]);
 Route::get('/lab/export/{no_rekap}', [ExportController::class, "exportLab"]);
+Route::get('/psg/export/{no_rekap}', [ExportController::class, "exportLab"]);
