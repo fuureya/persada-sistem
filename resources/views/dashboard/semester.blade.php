@@ -39,7 +39,7 @@
                                 </button>
 
                                 <a href="/semester/export/{{$no_rekap}}" class="btn btn-success ml-3"> Export excel</a>
-                            <a href="#" class="btn btn-danger ml-3"> Export pdf</a>
+                                <a href="#" class="btn btn-danger ml-3"> Export pdf</a>
                             </div>
                             
 
