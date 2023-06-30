@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\PembayaranExport;
 use App\Exports\SemesterExport;
 use App\Exports\SppExport;
+use App\Exports\LabExport;
 
 class ExportController extends Controller
 {
@@ -25,5 +26,10 @@ class ExportController extends Controller
     {
         return (new SppExport(last(request()->segments())))->download("Export Rekap Spp Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
   
+    }
+
+    public function exportLab() 
+    {
+        return (new LabExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
     }
 }

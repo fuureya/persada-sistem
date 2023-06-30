@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <div class="row">
                         {{-- modal section --}}
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="d-flex mb-3">
                                 {{-- button rekap --}}
                                 <form action="/dashboard/lab" method="GET" class="pr-3 pl-3">
@@ -36,6 +36,8 @@
                                     data-target="#insertData">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
+                                <a href="/lab/export/{{$no_rekap}}" class="btn btn-success ml-3"> Export excel</a>
+                                <a href="#" class="btn btn-danger ml-3"> Export pdf</a>
                             </div>
 
                             <!-- Modal -->
@@ -48,6 +50,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
+                                            
                                         </div>
                                         <div class="modal-body">
                                             <form method="post" action="/dashboard/lab">
@@ -107,7 +110,7 @@
                         </div>
                         {{-- end modal --}}
 
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="cari">
                                 <form action="/dashboard/lab" action="GET"
                                     class="d-flex justify-content-end form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

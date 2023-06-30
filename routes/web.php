@@ -53,3 +53,4 @@ Route::resource('/dashboard/pembangunan', PembangunanController::class);
 Route::get('/pembayaran/export/{no_rekap}', [ExportController::class, "exportPembayaran"]);
 Route::get('/semester/export/{no_rekap}', [ExportController::class, "exportSemester"]);
 Route::get('/spp/export/{no_rekap}', [ExportController::class, "exportSpp"]);
+Route::get('/lab/export/{no_rekap}', [ExportController::class, "exportLab"]);
