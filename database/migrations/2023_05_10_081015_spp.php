@@ -20,7 +20,6 @@ class Spp extends Migration
             $table->string("uraian")->nullable();
             $table->integer("penerimaan")->nullable();
             $table->integer("pengeluaran")->nullable();
-            $table->integer("saldo")->nullable();
             $table->dateTime("updated_at")->nullable();
             $table->dateTime("created_at")->nullable();
         });

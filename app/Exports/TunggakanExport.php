@@ -21,7 +21,7 @@ class TunggakanExport implements FromQuery, WithHeadings
     public function headings(): array
     {
         return [
-           ['NO', 'Tanggal', 'Kode', 'Uraian', 'Penerimaan', 'Pengeluaran', 'Saldo']
+           ['NO', 'Tanggal', 'Kode', 'Uraian', 'Penerimaan', 'Pengeluaran']
         ];
     }
 

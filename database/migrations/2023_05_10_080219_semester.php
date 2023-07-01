@@ -20,7 +20,6 @@ class Semester extends Migration
             $table->string("uraian")->nullable();
             $table->bigInteger("penerimaan")->nullable();
             $table->bigInteger("pengeluaran")->nullable();
-            $table->bigInteger("saldo")->nullable();
             $table->dateTime("updated_at")->nullable();
             $table->dateTime("created_at")->nullable();
         });

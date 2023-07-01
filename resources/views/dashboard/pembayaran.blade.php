@@ -77,7 +77,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="kelas">Masukkan Kelas</label>
-                                                      <input type="number" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
+                                                      <input type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas">
                                                       @error('kelas')
                                                         <div class="alert alert-danger">{{ $message }}</div>
                                                       @enderror

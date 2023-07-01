@@ -18,8 +18,7 @@ class sppFactory extends Factory
             "kode" => $this->faker->name(),
             "uraian" => $this->faker->words(10, true),
             "penerimaan" => $this->faker->numberBetween(50000, 150000),
-            "pengeluaran" => $this->faker->numberBetween(5000, 1500000),
-            "saldo" => $this->faker->numberBetween(5000, 1500000)
+            "pengeluaran" => $this->faker->numberBetween(5000, 1500000)
         ];
     }
 }
