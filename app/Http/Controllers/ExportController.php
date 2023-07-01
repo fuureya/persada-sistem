@@ -43,12 +43,12 @@ class ExportController extends Controller
 
     public function exportTunggakan() 
     {
-        return (new TunggakanExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
+        return (new TunggakanExport(last(request()->segments())))->download("Export Rekap Tunggakan Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
     }
     
     public function exportPembangunan() 
     {
-        return (new PembangunanExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
+        return (new PembangunanExport(last(request()->segments())))->download("Export Rekap Pembangunan Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
     }
     
 }

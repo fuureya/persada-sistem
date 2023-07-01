@@ -47,7 +47,8 @@ class PembangunanController extends Controller
             "data" => $data,
             "totalPenerimaan" => $totalPenerimaan,
             "totalPengeluaran" => $totalPengeluaran,
-            "totalSaldo" => $totalSaldo
+            "totalSaldo" => $totalSaldo,
+            "no_rekap" => $request->rekap
         ]);
     }
 
