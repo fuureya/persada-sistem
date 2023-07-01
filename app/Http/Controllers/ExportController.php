@@ -7,6 +7,8 @@ use App\Exports\SemesterExport;
 use App\Exports\SppExport;
 use App\Exports\LabExport;
 use App\Exports\PsgExport;
+use App\Exports\PembangunanExport;
+use App\Exports\TunggakanExport;
 
 class ExportController extends Controller
 {
@@ -37,6 +39,16 @@ class ExportController extends Controller
     public function exportPsg() 
     {
         return (new PsgExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
+    }
+
+    public function exportTunggakan() 
+    {
+        return (new TunggakanExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
+    }
+    
+    public function exportPembangunan() 
+    {
+        return (new PembangunanExport(last(request()->segments())))->download("Export Rekap Lab Bulan " . last(request()->segments()) . " Tahun " . date("Y") . " sec " . date("i:sa") . ".xlsx");
     }
     
 }
