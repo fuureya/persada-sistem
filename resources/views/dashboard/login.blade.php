@@ -12,8 +12,9 @@
             <div class="mb-3 d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p class="lead fw-normal mb-0 me-3 font-weight-bold text-primary">LOGIN</p>
             </div>
-          <form>
-  
+          <form method="POST">
+            @method("POST")
+            @csrf
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="text" id="form3Example3" class="form-control form-control-lg"
@@ -31,7 +32,7 @@
             
   
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="button" class="btn btn-primary btn-lg"
+              <button type="submit" class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
               
             </div>

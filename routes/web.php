@@ -7,6 +7,7 @@ use App\Http\Controllers\PembangunanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PendaftaranSmpController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\PendaftarSmkController;
 use App\Http\Controllers\PsgController;
 use App\Http\Controllers\SemesterController;
@@ -30,9 +31,8 @@ Route::get('/', function () {
 });
 
 // login
-route::get("login", function(){
-    return view("dashboard.login");
-});
+route::get("/login", [loginController::class, "loginPage"]);
+route::post("/login", [loginController::class, "loginProcess"]);
 
 // Dashboard Routers
 Route::get("/dashboard", [DashboardController::class, "index"]);
