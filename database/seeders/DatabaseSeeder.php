@@ -45,5 +45,10 @@ class DatabaseSeeder extends Seeder
         psg::factory(100)->create();
         tunggakan::factory(100)->create();
         pembangunan::factory(100)->create();
+
+        DB::table('users')->insert([
+            'username' => "admin",
+            'password' => bcrypt("rahasia"),
+        ]);
     }
 }
