@@ -21,8 +21,6 @@ table {
     
 }
 
-
-
 table th{
     position: sticky !important; 
     top: 0px !important;
@@ -45,4 +43,21 @@ table td {
     border: 1px solid rgb(177, 177, 177) !important;
     padding-left: 20px !important;
     
+}
+
+/* login */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
 }

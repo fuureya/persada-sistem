@@ -29,6 +29,11 @@ Route::get('/', function () {
     return view('home');
 });
 
+// login
+route::get("login", function(){
+    return view("dashboard.login");
+});
+
 // Dashboard Routers
 Route::get("/dashboard", [DashboardController::class, "index"]);
 Route::get("/dashboard/pendaftar-smp", [DashboardController::class, "pendaftarSmp"]);
