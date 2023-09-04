@@ -86,7 +86,7 @@ class PembangunanController extends Controller
             "pengeluaran" => $request->pengeluaran,
         ]);
 
-        if($insert){
+        if ($insert) {
             return redirect("/dashboard/pembangunan")->with(["success" => "Berhasil Menambah Data!"]);
         }
     }
