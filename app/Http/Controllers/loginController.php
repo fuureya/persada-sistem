@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
@@ -12,14 +12,28 @@ class loginController extends Controller
         return view("dashboard.login");
     }
 
-    public function loginProcess(Request $request)
+    public function authenticate(Request $request)
     {
-        if(User::where('username', $request->username)){
-            if(password_verify($request->password, User::where("password"))){
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
 
-                return redirect("dashboard");
-            }
-        } 
-        
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+
+        return back()->withErrors([
+            'errors' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('login');
     }
 }

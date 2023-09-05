@@ -31,11 +31,12 @@ Route::get('/', function () {
 });
 
 // login
-route::get("/login", [loginController::class, "loginPage"]);
-route::post("/login", [loginController::class, "loginProcess"]);
+route::get("/login", [loginController::class, "loginPage"])->middleware('guest');
+route::post("/login", [loginController::class, "authenticate"])->middleware('guest');
+route::get("/logout", [loginController::class, "logout"])->middleware('auth');
 
 // Dashboard Routers
-Route::get("/dashboard", [DashboardController::class, "index"]);
+Route::get("/dashboard", [DashboardController::class, "index"])->middleware('auth');
 Route::get("/dashboard/pendaftar-smp", [DashboardController::class, "pendaftarSmp"]);
 Route::get("/dashboard/pendaftar-smk", [DashboardController::class, "pendaftarSmk"]);
 // end Dashboard Routers

@@ -21,7 +21,7 @@ class pembayaranExport implements FromQuery, WithHeadings
     public function headings(): array
     {
         return [
-           ['NO', 'Tanggal Bayar', 'Nama Siswa', 'NIS', 'Kelas', 'Uang Pembangunan', 'Uang SPP', 'Uang Lab', 'Semester Ganjil', 'Semester Genap', 'Uang PSG', 'Uang UAS', 'Tunggakan', 'Keterangan']
+            ['NO', 'Tanggal Bayar', 'Nama Siswa', 'NIS', 'Kelas', 'Uang Pembangunan', 'Uang SPP', 'Uang Lab', 'Semester Ganjil', 'Semester Genap', 'Uang PSG', 'Uang UAS', 'Tunggakan', 'Keterangan']
         ];
     }
 

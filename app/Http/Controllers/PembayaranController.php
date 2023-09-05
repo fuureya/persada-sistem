@@ -16,7 +16,7 @@ class PembayaranController extends Controller
     public function index(Request $request)
     {
         $pembayaran = pembayaran::whereNotNull('nis');
-        
+
         // variabel yang mengirim ke blade sebagai total
         $totalPembangunan = $pembayaran->sum("uang_pembangunan");
         $totalUangSpp = $pembayaran->sum("uang_spp");
@@ -217,8 +217,4 @@ class PembayaranController extends Controller
         $delete->delete();
         return redirect("dashboard/pembayaran");
     }
-
-
-    
-
 }

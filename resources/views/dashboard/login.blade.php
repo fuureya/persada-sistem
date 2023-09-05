@@ -11,14 +11,17 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <div class="mb-3 d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                         <p class="lead fw-normal mb-0 me-3 font-weight-bold text-primary">LOGIN</p>
+                        @if (session()->has('errors'))
+                            <p>error</p>
+                        @endif
                     </div>
-                    <form method="POST">
-                        @method('POST')
+                    <form method="post" action="/login">
                         @csrf
+
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <input type="text" id="form3Example3" class="form-control form-control-lg"
-                                placeholder="Enter a valid email address" name="username">
+                                placeholder="Enter Your Username" name="username">
                             <label class="form-label" for="form3Example3">Username</label>
                         </div>
 
@@ -28,8 +31,6 @@
                                 placeholder="Enter password" name="password">
                             <label class="form-label" for="form3Example4">Password</label>
                         </div>
-
-
 
                         <div class="text-center text-lg-start mt-4 pt-2">
                             <button type="submit" class="btn btn-primary btn-lg"
