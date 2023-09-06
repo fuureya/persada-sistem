@@ -31,7 +31,7 @@ Route::get('/', function () {
 });
 
 // login
-route::get("/login", [loginController::class, "loginPage"])->middleware('guest');
+route::get("/login", [loginController::class, "loginPage"])->name('login')->middleware('guest');
 route::post("/login", [loginController::class, "authenticate"])->middleware('guest');
 route::get("/logout", [loginController::class, "logout"])->middleware('auth');
 
