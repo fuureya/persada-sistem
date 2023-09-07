@@ -233,7 +233,7 @@
                                             <th>Uang UAS</th>
                                             <th>Tunggakan</th>
                                             <th>Keterangan</th>
-                                            <th>Action</th>
+                                            <th width="50">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -253,18 +253,22 @@
                                                 <td>Rp. {{ $siswaSmk->uang_uas }}</td>
                                                 <td>Rp. {{ $siswaSmk->tunggakan }}</td>
                                                 <td>{{ $siswaSmk->keterangan }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center d-flex">
                                                     <form action="/dashboard/pembayaran/{{ $siswaSmk->id }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
                                                             onclick="return confirm('Yakin mau menghapus?')"
-                                                            class="btn btn-danger badge">Hapus</button>
+                                                            class="btn btn-danger badge mx-2"><i
+                                                                class="fa-solid fa-trash mx-1"></i></button>
                                                     </form>
                                                     <a href="/dashboard/pembayaran/{{ $siswaSmk->id }}"
                                                         class="btn btn-warning badge tombol">
-                                                        Update</a>
+                                                        <i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="/pembayaran/nota/{{ $siswaSmk->id }}"
+                                                        class="btn btn-success badge mx-2"><i
+                                                            class="fa-solid fa-print"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

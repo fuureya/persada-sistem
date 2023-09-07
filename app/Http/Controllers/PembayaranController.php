@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\pembayaran;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
-
 
 class PembayaranController extends Controller
 {
@@ -216,5 +216,12 @@ class PembayaranController extends Controller
         $delete = pembayaran::find($pembayaran);
         $delete->delete();
         return redirect("dashboard/pembayaran");
+    }
+
+    public function printNota(Request $request)
+    {
+        $nota = pembayaran::where('id', $request->id)->get();
+        $pdf = PDF::loadview('dashboard.nota', ['data' => $nota])->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

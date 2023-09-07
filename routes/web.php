@@ -63,3 +63,6 @@ Route::get('/lab/export/{no_rekap}', [ExportController::class, "exportLab"]);
 Route::get('/psg/export/{no_rekap}', [ExportController::class, "exportLab"]);
 Route::get('/tunggakan/export/{no_rekap}', [ExportController::class, "exportTunggakan"]);
 Route::get('/pembangunan/export/{no_rekap}', [ExportController::class, "exportPembangunan"]);
+
+// report nota
+Route::get('/pembayaran/nota/{id}', [PembayaranController::class, "printNota"]);
