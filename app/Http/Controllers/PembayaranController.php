@@ -220,8 +220,11 @@ class PembayaranController extends Controller
 
     public function printNota(Request $request)
     {
-        $nota = pembayaran::where('id', $request->id)->get();
-        $pdf = PDF::loadview('dashboard.nota', ['data' => $nota])->setPaper('a4', 'landscape');
-        return $pdf->stream();
+        $nota = pembayaran::find($request->id);
+
+        // $pdf = PDF::loadview('dashboard.nota', compact("nota"))->setPaper('a4', 'landscape');
+        // return $pdf->stream();
+
+        return view('dashboard.nota', compact("nota"));
     }
 }

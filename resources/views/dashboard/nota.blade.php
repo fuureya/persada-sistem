@@ -7,11 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nota</title>
     <style>
+        body {
+            height: 210mm;
+            width: 148mm;
+        }
+
         .section {
-            width: 50%;
             border: 1px solid black;
             padding: 5px;
             font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: always
         }
 
         .header h1 {
@@ -52,18 +60,18 @@
         }
 
         .body ul li {
-            font-size: 11px;
+            font-size: 6px;
             font-weight: bold;
         }
 
         .biaya-num li {
-            font-size: 11px;
+            font-size: 6px;
             font-weight: bold;
 
         }
 
         .biaya-rp li {
-            font-size: 11px;
+            font-size: 6px;
             font-weight: bold;
             text-align: left;
             list-style-type: none;
@@ -78,7 +86,7 @@
         .to p {
             margin-left: 20px;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 8px;
             text-align: center;
         }
 
@@ -89,7 +97,7 @@
         .total p {
 
             font-weight: bold;
-            font-size: 12px
+            font-size: 8px
         }
 
         .total #jumlah {
@@ -103,76 +111,106 @@
         }
 
         .catatan h5 {
-            font-size: 12px;
+            font-size: 8px;
             font-weight: bold;
         }
 
         .catatan p {
-            font-size: 10px;
+            font-size: 5px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 210mm;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table,
+        th {
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="section">
-        <div class="header">
-            <h1>SMK PERSADA MAKASSAR</h1>
-            <h3>KWITANSI PEMBAYARAN</h3>
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                <h1 style="font-size: 13px; text-align: center;">SMK PERSADA MAKASSAR</h1>
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <h3 style="font-size: 10px; text-align: center;">KWITANSI PEMBAYARAN</h3>
+            </td>
+            <td></td>
+        </tr>
 
-            <div>
-                <p id="nama">Nama : Amanesu</p>
-                <p id="kelas">Kelas : XII TKJ</p>
-            </div>
-        </div>
-
-        <div class="body">
-            <ul>
-                <li>NO : </li>
-                <li>Keterangan : </li>
-                <li>Jumlah : </li>
-            </ul>
-
-            <div>
-                <ol class="biaya-num">
-                    <li>Biaya Pembangunan</li>
+        <tr>
+            <td>Nama : {{ $nota->nama_siswa }}</td>
+            <td width='350'>Keterangan Pembayaran : </td>
+            <td>Jumlah : </td>
+        </tr>
+        <tr>
+            <td>
+                <ol style="font-size: 13px;">
+                    <li>Biaya Pembangunan : </li>
                     <li>Sumbangan Pembinaan Pendidikan (SPP)</li>
-                    <li>Laboratorium</li>
+                    <li>laboratorium</li>
                     <li>Biaya Semester</li>
                     <li>Pendidikan Sistem Ganda (PSG)</li>
-                    <li>Ujian Sekolah dan UKK</li>
+                    <li>Ujian Sekolah & UKK</li>
                     <li>Tunggakan Dan Alumni</li>
-                    <li>Lain - Lain </li>
+                    <li>Lain Lain</li>
                 </ol>
-                <ol class="biaya-rp">
-                    <li>Rp.432434</li>
-                    <li>Rp.43</li>
-                    <li>Rp.434</li>
-                    <li>Rp.434234234234</li>
-                    <li>Rp.</li>
-                    <li>Rp.</li>
-                    <li>Rp.</li>
-                    <li>Rp.</li>
+            </td>
+            <td></td>
+            <td>
+                <ol style="list-style-type: none">
+                    <li>Rp. {{ $nota->uang_pembangunan }}</li>
+                    <li>Rp. {{ $nota->uang_spp }}</li>
+                    <li>Rp. {{ $nota->uang_lab }}</li>
+                    <li>Rp. {{ $nota->semester_ganjil }}</li>
+                    <li>Rp. {{ $nota->uang_psg }}</li>
+                    <li>Rp. {{ $nota->uang_uas }}</li>
+                    <li>Rp. {{ $nota->tunggakan }}</li>
+                    <li>Rp. {{ $nota->tunggakan }}</li>
+
                 </ol>
-            </div>
-        </div>
+            </td>
+        <tr>
+            <td></td>
+            <td style="text-align: center;">Total : </td>
+            <td>Rp. 1.000.000</td>
+        </tr>
 
-        <div class="footer">
-            <div class="to">
-                <p>Yang Menerima</p>
-                <p id="nama-bendahara">Muliyadi, S,T, S.Pd., M.M</p>
-                <p>Bendahara</p>
-            </div>
-            <div class="total">
-                <p id="jumlah">Total : Rp. 132323232</p>
-                <div class="catatan">
-                    <h5>Catatan : </h5>
-                    <p> - Di Simpan Sebagai Bukti Pembayaran Yang SAH</p>
-                    <p> - Uang Yang Sudah Di Bayar Tidak Dapat Di Minta Kembali</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
+        <tr>
+            <td style="text-align: center">
+                <p style="font-size: 10px;">Yang Menerima</p> <br> <br>
+                <p><strong style="font-size: 10px;">Muliyadi, S.T., S.Pd., M.M</strong></p>
+                <strong style="font-size: 10px;">Bendahara</strong>
+            </td>
+            <td></td>
+            <td>
+                <p><strong style="font-size: 13px;">Catatan : </strong> <br>
+                    <span style="font-size: 10px;">
+                        - Disimpan sebagai Bukti Pembayaran yang SAH <br>
+                        - Uang yang sudah dibayarkan tidak dapat diminta kembali
+                    </span>
+                </p>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
