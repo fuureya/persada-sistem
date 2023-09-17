@@ -37,32 +37,32 @@ route::get("/logout", [loginController::class, "logout"])->middleware('auth');
 
 // Dashboard Routers
 Route::get("/dashboard", [DashboardController::class, "index"])->middleware('auth');
-Route::get("/dashboard/pendaftar-smp", [DashboardController::class, "pendaftarSmp"]);
-Route::get("/dashboard/pendaftar-smk", [DashboardController::class, "pendaftarSmk"]);
+Route::get("/dashboard/pendaftar-smp", [DashboardController::class, "pendaftarSmp"])->middleware('auth');
+Route::get("/dashboard/pendaftar-smk", [DashboardController::class, "pendaftarSmk"])->middleware('auth');
 // end Dashboard Routers
 
 // Daftar siswa routers
-Route::resource('/daftarsmp', PendaftaranSmpController::class);
-Route::resource('/daftarsmk', PendaftarSmkController::class);
+Route::resource('/daftarsmp', PendaftaranSmpController::class)->middleware('auth');
+Route::resource('/daftarsmk', PendaftarSmkController::class)->middleware('auth');
 
 // dashboard keuangan panel route
-Route::resource('/dashboard/pembayaran', PembayaranController::class);
-Route::resource('/dashboard/semester', SemesterController::class);
-Route::resource('/dashboard/spp', SppController::class);
-Route::resource('/dashboard/lab', LabController::class);
-Route::resource('/dashboard/psg', PsgController::class);
-Route::resource('/dashboard/tunggakan', TunggakanController::class);
-Route::resource('/dashboard/pembangunan', PembangunanController::class);
+Route::resource('/dashboard/pembayaran', PembayaranController::class)->middleware('auth');
+Route::resource('/dashboard/semester', SemesterController::class)->middleware('auth');
+Route::resource('/dashboard/spp', SppController::class)->middleware('auth');
+Route::resource('/dashboard/lab', LabController::class)->middleware('auth');
+Route::resource('/dashboard/psg', PsgController::class)->middleware('auth');
+Route::resource('/dashboard/tunggakan', TunggakanController::class)->middleware('auth');
+Route::resource('/dashboard/pembangunan', PembangunanController::class)->middleware('auth');
 
 
 // export excel
-Route::get('/pembayaran/export/{no_rekap}', [ExportController::class, "exportPembayaran"]);
-Route::get('/semester/export/{no_rekap}', [ExportController::class, "exportSemester"]);
-Route::get('/spp/export/{no_rekap}', [ExportController::class, "exportSpp"]);
-Route::get('/lab/export/{no_rekap}', [ExportController::class, "exportLab"]);
-Route::get('/psg/export/{no_rekap}', [ExportController::class, "exportLab"]);
-Route::get('/tunggakan/export/{no_rekap}', [ExportController::class, "exportTunggakan"]);
-Route::get('/pembangunan/export/{no_rekap}', [ExportController::class, "exportPembangunan"]);
+Route::get('/pembayaran/export/{no_rekap}', [ExportController::class, "exportPembayaran"])->middleware('auth');
+Route::get('/semester/export/{no_rekap}', [ExportController::class, "exportSemester"])->middleware('auth');
+Route::get('/spp/export/{no_rekap}', [ExportController::class, "exportSpp"])->middleware('auth');
+Route::get('/lab/export/{no_rekap}', [ExportController::class, "exportLab"])->middleware('auth');
+Route::get('/psg/export/{no_rekap}', [ExportController::class, "exportLab"])->middleware('auth');
+Route::get('/tunggakan/export/{no_rekap}', [ExportController::class, "exportTunggakan"])->middleware('auth');
+Route::get('/pembangunan/export/{no_rekap}', [ExportController::class, "exportPembangunan"])->middleware('auth');
 
 // report nota
-Route::get('/pembayaran/nota/{id}', [PembayaranController::class, "printNota"]);
+Route::get('/pembayaran/nota/{id}', [PembayaranController::class, "printNota"])->middleware('auth');

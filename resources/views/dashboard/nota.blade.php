@@ -185,7 +185,6 @@
                     <li>Rp. {{ $nota->uang_uas }}</li>
                     <li>Rp. {{ $nota->tunggakan }}</li>
                     <li>Rp. {{ $nota->tunggakan }}</li>
-
                 </ol>
             </td>
         <tr>
