@@ -44,7 +44,8 @@ class SppController extends Controller
 
         $data = $spp->paginate(10);
 
-        return view("dashboard.spp", [
+        return view("dashboard.all", [
+            "name" => "spp",
             "data" => $data,
             "totalPenerimaan" => $totalPenerimaan,
             "totalPengeluaran" => $totalPengeluaran,
@@ -100,7 +101,8 @@ class SppController extends Controller
      */
     public function show(spp $spp)
     {
-        return view("dashboard.spp_update", [
+        return view("dashboard.all_update", [
+            "name" => "spp",
             "data" => $spp
         ]);
     }

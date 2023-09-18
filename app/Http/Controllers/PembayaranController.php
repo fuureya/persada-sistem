@@ -171,22 +171,6 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, pembayaran $pembayaran)
     {
-        // validate before update
-        // $validated = $request->validate([
-        //     'update_nama_siswa' => '',
-        //     'update_tanggal_bayar' => 'required',
-        //     'update_nis' => 'required',
-        //     'update_kelas' => 'required',
-        //     'update_uang_pembangunan' => 'required',
-        //     'update_uang_spp' => 'required',
-        //     'update_uang_lab' => 'required',
-        //     'update_uang_uas' => 'required',
-        //     'update_semester_ganjil' => 'required',
-        //     'update_semester_genap' => 'required',
-        //     'update_uang_psg' => 'required',
-        //     'update_tunggakan' => 'required',
-        //     'update_keterangan' => 'required'
-        // ]);
 
         $pembayaran->find($request->id);
         $pembayaran->nama_siswa = $request->update_nama_siswa;

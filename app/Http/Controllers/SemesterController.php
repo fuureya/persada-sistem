@@ -44,7 +44,8 @@ class SemesterController extends Controller
 
         // view biasa
         $data = $semester->paginate(10);
-        return view("dashboard.semester", [
+        return view("dashboard.all", [
+            "name" => "semester",
             "data" => $data,
             "totalPenerimaan" => $totalPenerimaan,
             "totalPengeluaran" => $totalPengeluaran,
@@ -99,9 +100,12 @@ class SemesterController extends Controller
      * @param  \App\Models\semester  $semester
      * @return \Illuminate\Http\Response
      */
+
+
     public function show(semester $semester)
     {
         return view("dashboard.all_update", [
+            "name" => "semester",
             "data" => $semester
         ]);
     }
